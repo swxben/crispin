@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{564E91A9-390F-452F-A5E3-A2DF50EC8E75}</ProjectGuid>
+    <ProjectGuid>{A3D57DFF-7D25-46E8-A353-2DEC5DFD37A5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>swxben.reporting</RootNamespace>
-    <AssemblyName>swxben.reporting</AssemblyName>
+    <RootNamespace>swxben.reporting.ExampleReportLibrary</RootNamespace>
+    <AssemblyName>swxben.reporting.ExampleReportLibrary</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="RazorGenerator.Templating">
+      <HintPath>..\..\packages\RazorGenerator.Templating.1.5.0.0\lib\net40\RazorGenerator.Templating.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,7 +43,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Package.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report1.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Report1.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="StaticTest1.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StaticTest1.cshtml</DependentUpon>
+    </Compile>
+    <None Include="StaticTest1.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>StaticTest1.generated.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Report1.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Report1.generated.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

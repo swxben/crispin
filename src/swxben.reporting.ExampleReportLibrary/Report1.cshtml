@@ -1,0 +1,27 @@
+﻿@* Generator: Template *@
+@using swxben.reporting.ExampleReportLibrary
+
+@functions {
+    public IEnumerable<Package> Packages { get; set; }
+}
+
+<table>
+    <thead>
+        <tr>
+            <th>Origin</th>
+            <th>Destination</th>
+            <th>Weight (kg)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var package in Packages)
+        {
+            <tr>
+                <td>@package.Origin</td>
+                <td>@package.Destination</td>
+                <td>@package.Cost.ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

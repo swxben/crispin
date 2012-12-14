@@ -25,7 +25,48 @@ namespace swxben.reporting.ExampleReportLibrary
         {
 
 
-WriteLiteral("\r\n<report>\r\n\t...\r\n</report>");
+WriteLiteral(@"<?xml version=""1.0"" encoding=""UTF-8"" ?>
+<!DOCTYPE report [
+]>
+<report font-size=""7pt"">
+	<title>Static test 1</title>
+    <content>
+        <pageSequence orientation=""portrait"">
+            <htmlBlock>
+                <h1>Static test 1</h1>
+                <h4>Generated ");
+
+
+            
+            #line 10 "..\..\StaticTest1.cshtml"
+                         Write(DateTime.Now.ToString());
+
+            
+            #line default
+            #line hidden
+WriteLiteral(@"</h4>
+            </htmlBlock>
+
+            <contentBlock>
+                <table type=""DataGrid"">
+                    <col width=""30%"" />
+                    <col width=""70%"" />
+                    <thead>
+                        <tr>
+                            <th align=""left"">ID</th>
+                            <th align=""left"">Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>123</td><td>Ben</td></tr>
+                        <tr><td>456</td><td>Justine</td></tr>
+                        <tr><td>445</td><td>Ann</td></tr>
+                    </tbody>
+                </table>
+            </contentBlock>
+        </pageSequence>
+    </content>
+</report>");
 
 
         }

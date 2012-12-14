@@ -13,16 +13,29 @@ namespace swxben.reporting
 
         public ReportConverterFactory()
         {
-            var htmlXslt = new XslCompiledTransform();
-            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("swxben.reporting.xslt.XrptToHtml.xslt"))
-            using (var reader = new XmlTextReader(stream))
-            {
-                htmlXslt.Load(reader);
-            }
+            var htmlXslt = GetXslt("swxben.reporting.xslt.XrptToHtml.xslt");
+            var csvXslt = GetXslt("swxben.reporting.xslt.XrptToCsv.xslt");
 
             Converters = new IReportConverter[] {
-                new HtmlReportConverter(htmlXslt)
+                new HtmlReportConverter(htmlXslt),
+                new CsvReportConverter(csvXslt)
             };
+        }
+
+        private static XslCompiledTransform GetXslt(string xsltName)
+        {
+            var xslt = new XslCompiledTransform();
+
+            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(xsltName))
+            using (var reader = new XmlTextReader(stream))
+            {
+                xslt.Load(
+                    reader, 
+                    new XsltSettings { EnableScript = true,  }, 
+                    new XmlUrlResolver());
+            }
+
+            return xslt;
         }
 
         public T GetConverter<T>() where T : IReportConverter

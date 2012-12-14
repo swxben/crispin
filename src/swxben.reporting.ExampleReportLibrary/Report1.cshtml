@@ -1,27 +1,45 @@
-﻿@* Generator: Template *@
+﻿@* Generator: Template *@<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE report [
+]>
 @using swxben.reporting.ExampleReportLibrary
 
 @functions {
     public IEnumerable<Package> Packages { get; set; }
 }
 
-<table>
-    <thead>
-        <tr>
-            <th>Origin</th>
-            <th>Destination</th>
-            <th>Weight (kg)</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var package in Packages)
-        {
-            <tr>
-                <td>@package.Origin</td>
-                <td>@package.Destination</td>
-                <td>@package.Cost.ToString("C")</td>
-            </tr>
-        }
-    </tbody>
-</table>
+<report>
+    <title>Report 1</title>
+    <content>
+        <pageSequence orientation="portrait">
+            <htmlBlock>
+                <h1>Report 1</h1>
+                <h4>Generated @DateTime.Now.ToString()</h4>
+            </htmlBlock>
+
+            <contentBlock>
+                <table type="DataGrid">
+                    <col width="30%" />
+                    <col width="70%" />
+                    <thead>
+                        <tr>
+                            <th>Origin</th>
+                            <th>Destination</th>
+                            <th>Weight (kg)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var package in Packages)
+                        {
+                            <tr>
+                                <td>@package.Origin</td>
+                                <td>@package.Destination</td>
+                                <td>@package.Cost.ToString("C")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </contentBlock>
+        </pageSequence>
+    </content>
+</report>
 

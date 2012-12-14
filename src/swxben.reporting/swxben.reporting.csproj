@@ -40,10 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CsvReportConverter.cs" />
+    <Compile Include="Helpers\StringWriterWithEncoding.cs" />
     <Compile Include="HtmlReportConverter.cs" />
     <Compile Include="IReportConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportConverterFactory.cs" />
+    <EmbeddedResource Include="xslt\XrptToCsv.xslt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="xslt\XrptToHtml.xslt" />

@@ -16,7 +16,7 @@ namespace swxben.reporting.ExampleReportLibrary
     using System.Linq;
     using System.Text;
     
-    #line 2 "..\..\Report1.cshtml"
+    #line 4 "..\..\Report1.cshtml"
     using swxben.reporting.ExampleReportLibrary;
     
     #line default
@@ -27,7 +27,7 @@ namespace swxben.reporting.ExampleReportLibrary
     {
 #line hidden
 
-        #line 4 "..\..\Report1.cshtml"
+        #line 6 "..\..\Report1.cshtml"
 
     public IEnumerable<Package> Packages { get; set; }
 
@@ -38,66 +38,92 @@ namespace swxben.reporting.ExampleReportLibrary
         {
 
 
-WriteLiteral("\r\n");
+WriteLiteral("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n<!DOCTYPE report [\r\n]>\r\n");
 
 
 WriteLiteral("\r\n");
 
 
-WriteLiteral("\r\n\r\n<table>\r\n    <thead>\r\n        <tr>\r\n            <th>Origin</th>\r\n            " +
-"<th>Destination</th>\r\n            <th>Weight (kg)</th>\r\n        </tr>\r\n    </the" +
-"ad>\r\n    <tbody>\r\n");
+WriteLiteral("\r\n\r\n<report>\r\n    <title>Report 1</title>\r\n    <content>\r\n        <pageSequence o" +
+"rientation=\"portrait\">\r\n            <htmlBlock>\r\n                <h1>Report 1</h" +
+"1>\r\n                <h4>Generated ");
 
 
             
-            #line 17 "..\..\Report1.cshtml"
-         foreach (var package in Packages)
-        {
-
-            
-            #line default
-            #line hidden
-WriteLiteral("            <tr>\r\n                <td>");
-
-
-            
-            #line 20 "..\..\Report1.cshtml"
-               Write(package.Origin);
+            #line 16 "..\..\Report1.cshtml"
+                         Write(DateTime.Now.ToString());
 
             
             #line default
             #line hidden
-WriteLiteral("</td>\r\n                <td>");
+WriteLiteral(@"</h4>
+            </htmlBlock>
+
+            <contentBlock>
+                <table type=""DataGrid"">
+                    <col width=""30%"" />
+                    <col width=""70%"" />
+                    <thead>
+                        <tr>
+                            <th>Origin</th>
+                            <th>Destination</th>
+                            <th>Weight (kg)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+");
 
 
             
-            #line 21 "..\..\Report1.cshtml"
-               Write(package.Destination);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</td>\r\n                <td>");
-
-
-            
-            #line 22 "..\..\Report1.cshtml"
-               Write(package.Cost.ToString("C"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</td>\r\n            </tr>\r\n");
-
-
-            
-            #line 24 "..\..\Report1.cshtml"
-        }
+            #line 31 "..\..\Report1.cshtml"
+                         foreach (var package in Packages)
+                        {
 
             
             #line default
             #line hidden
-WriteLiteral("    </tbody>\r\n</table>\r\n\r\n");
+WriteLiteral("                            <tr>\r\n                                <td>");
+
+
+            
+            #line 34 "..\..\Report1.cshtml"
+                               Write(package.Origin);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</td>\r\n                                <td>");
+
+
+            
+            #line 35 "..\..\Report1.cshtml"
+                               Write(package.Destination);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</td>\r\n                                <td>");
+
+
+            
+            #line 36 "..\..\Report1.cshtml"
+                               Write(package.Cost.ToString("C"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</td>\r\n                            </tr>\r\n");
+
+
+            
+            #line 38 "..\..\Report1.cshtml"
+                        }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                    </tbody>\r\n                </table>\r\n            </contentBloc" +
+"k>\r\n        </pageSequence>\r\n    </content>\r\n</report>\r\n\r\n");
 
 
         }

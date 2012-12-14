@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>swxben.reporting</id>
+    <version>0.1.0</version>
+    <title>swxben.reporting</title>
+    <authors>Ben Scott</authors>
+    <owners>Ben Scott</owners>
+    <licenseUrl>http://creativecommons.org/licenses/by-sa/3.0/</licenseUrl>
+    <projectUrl>https://github.com/swxben/swxben.reporting</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Reporting library, using Razor templates to generate HTML, Excel and PDF reports</description>
+    <summary>Reporting library, using Razor templates to generate HTML, Excel and PDF reports</summary>
+    <releaseNotes>Initial release</releaseNotes>
+    <tags>reporting razor template html excel pdf xsl-fo</tags>
+  </metadata>
+  <files>
+    <file src="src\swxben.reporting\bin\Release\swxben.reporting.dll" target="lib\net40\swxben.reporting.dll" />
+  </files>
+</package>

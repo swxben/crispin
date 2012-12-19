@@ -16,6 +16,12 @@ namespace swxben.reporting.ExampleReportLibrary
     using System.Linq;
     using System.Text;
     
+    #line 10 "..\..\StaticTest1.cshtml"
+    using swxben.reporting.ExampleReportLibrary;
+    
+    #line default
+    #line hidden
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "1.5.0.0")]
     public partial class StaticTest1 : RazorGenerator.Templating.RazorTemplateBase
     {
@@ -25,27 +31,35 @@ namespace swxben.reporting.ExampleReportLibrary
         {
 
 
-WriteLiteral(@"<?xml version=""1.0"" encoding=""UTF-8"" ?>
-<!DOCTYPE report [
-]>
-<report font-size=""7pt"">
-	<title>Static test 1</title>
-    <content>
-        <pageSequence orientation=""portrait"">
-            <htmlBlock>
-                <h1>Static test 1</h1>
-                <h4>Generated ");
+WriteLiteral("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n<!DOCTYPE report [\r\n    <!ENTITY nbsp \"&" +
+"#160;\">\r\n    <!ENTITY ldquo \"&#8220;\">\r\n    <!ENTITY lsquo \"&#8216;\">\r\n    <!ENT" +
+"ITY rdquo \"&#8221;\">\r\n    <!ENTITY rsquo \"&#8217;\">\r\n    <!ENTITY quot \"&#34;\">\r" +
+"\n]>\r\n");
+
 
 
             
-            #line 10 "..\..\StaticTest1.cshtml"
-                         Write(DateTime.Now.ToString());
+            #line 11 "..\..\StaticTest1.cshtml"
+  
+    var header = new Header1 { Title = "Static test 1", Subtitle = "" };
+    var footer = new Footer1();
+
 
             
             #line default
             #line hidden
-WriteLiteral(@"</h4>
-            </htmlBlock>
+WriteLiteral("<report font-size=\"7pt\">\r\n\t<title>Static test 1</title>\r\n    <content>\r\n        <" +
+"pageSequence orientation=\"portrait\">\r\n            ");
+
+
+            
+            #line 19 "..\..\StaticTest1.cshtml"
+       Write(header.TransformText());
+
+            
+            #line default
+            #line hidden
+WriteLiteral(@"
 
             <contentBlock>
                 <table type=""DataGrid"">
@@ -64,9 +78,18 @@ WriteLiteral(@"</h4>
                     </tbody>
                 </table>
             </contentBlock>
-        </pageSequence>
-    </content>
-</report>");
+
+            ");
+
+
+            
+            #line 39 "..\..\StaticTest1.cshtml"
+       Write(footer.TransformText());
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n        </pageSequence>\r\n    </content>\r\n</report>");
 
 
         }

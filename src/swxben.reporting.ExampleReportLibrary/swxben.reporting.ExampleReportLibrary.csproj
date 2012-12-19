@@ -43,6 +43,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomPageSetupTest.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomPageSetupTest.cshtml</DependentUpon>
+    </Compile>
+    <None Include="Footer1.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Footer1.generated.cs</LastGenOutput>
+    </None>
+    <Compile Include="Footer1.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Footer1.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Header1.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Header1.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="LeftPaddedTable.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LeftPaddedTable.cshtml</DependentUpon>
+    </Compile>
     <Compile Include="Package.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Report1.generated.cs">
@@ -55,9 +79,30 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StaticTest1.cshtml</DependentUpon>
     </Compile>
+    <Compile Include="TableBackgroundTest.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TableBackgroundTest.cshtml</DependentUpon>
+    </Compile>
+    <None Include="CustomPageSetupTest.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>CustomPageSetupTest.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Header1.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Header1.generated.cs</LastGenOutput>
+    </None>
+    <None Include="LeftPaddedTable.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>LeftPaddedTable.generated.cs</LastGenOutput>
+    </None>
     <None Include="StaticTest1.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>StaticTest1.generated.cs</LastGenOutput>
+    </None>
+    <None Include="TableBackgroundTest.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>TableBackgroundTest.generated.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

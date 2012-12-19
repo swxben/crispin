@@ -1,9 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE xsl:stylesheet [
+  <!ENTITY nbsp "&#160;">
+  <!ENTITY ldquo "&#8220;">
+  <!ENTITY lsquo "&#8216;">
+  <!ENTITY rdquo "&#8221;">
+  <!ENTITY rsquo "&#8217;">
+  <!ENTITY quot "&#34;">
+]>
 <xsl:stylesheet 
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:fo="http://www.w3.org/1999/XSL/Format"
   version="1.0">
-  <xsl:output method="xml" indent="yes" />
+  <xsl:output
+    method="xml"
+    indent="yes" 
+    />
 
   <!-- Page setup (report/pageSetup): -->
   <xsl:variable name="pageMarginLeft">

@@ -48,7 +48,13 @@ namespace swxben.reporting
                 _xslt.Transform(xml, null, xmlWriter, new XmlUrlResolver());
 
                 xslfoText = writer.ToString()
-                    .Replace(Convert.ToString((char)160), "&nbsp;");
+                    .Replace(Convert.ToString((char)160), "&#160;")
+                    .Replace("&nbsp;", "&#160;")
+                    .Replace("&ldquo;", "&#8220;")
+                    .Replace("&lsquo;", "&#8216;")
+                    .Replace("&rdquo;", "&#8221;")
+                    .Replace("&rsquo;", "&#8217;")
+                    .Replace("&quot;", "&#34;");
             }
 
             var pdfData = GetPdfData(xslfoText, reportName);

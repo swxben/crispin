@@ -21,7 +21,10 @@ namespace swxben.reporting.ExampleApplication
                             new Package{ Origin = "Gladstone", Destination = "Dululu", Cost = 8.5m }
                         }
                  },
-                 new StaticTest1()
+                 new StaticTest1(),
+                 new CustomPageSetupTest(),
+                 new TableBackgroundTest(),
+                 new LeftPaddedTable()
             };
             var converterFactory = new ReportConverterFactory();
 
@@ -42,25 +45,30 @@ namespace swxben.reporting.ExampleApplication
                 Console.WriteLine(convertedReport);
                 WriteToFile(convertedReport, "conv.txt");
             }
-            else if (convertAction == 2)
+            else if (convertAction == 2 || convertAction == 3)
             {
                 var convertedReport = converter.ConvertToBuffer(xrpt, "TEST");
                 Console.WriteLine("Converted to buffer.");
-                WriteToFile(convertedReport, "conv.bin");
+                var dest = convertAction == 2 ? "conv.bin" : "conv.pdf";
+                WriteToFile(convertedReport, dest);
             }
 
+
             Console.WriteLine("Press any key to quit...");
-            Console.Read();
+            Console.ReadKey();
         }
 
         private static int GetConvertAction()
         {
             while (true)
             {
-                Console.WriteLine("Convert to (1) string or (2) byte array:");
+                Console.WriteLine("Convert to (1) string (2) byte array (3) PDF:");
                 int convertAction = 0;
                 var s = Console.ReadLine();
-                if (!int.TryParse(s.Trim(), out convertAction) || (convertAction != 1 && convertAction != 2))
+                if (!int.TryParse(s.Trim(), out convertAction) || (
+                    convertAction != 1 && 
+                    convertAction != 2 &&
+                    convertAction != 3))
                 {
                     Console.WriteLine("Invalid converter action");
                 }

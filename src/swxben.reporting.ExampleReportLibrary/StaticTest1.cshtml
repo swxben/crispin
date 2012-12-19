@@ -1,14 +1,22 @@
 ﻿@* Generator: Template *@<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE report [
+    <!ENTITY nbsp "&#160;">
+    <!ENTITY ldquo "&#8220;">
+    <!ENTITY lsquo "&#8216;">
+    <!ENTITY rdquo "&#8221;">
+    <!ENTITY rsquo "&#8217;">
+    <!ENTITY quot "&#34;">
 ]>
+@using swxben.reporting.ExampleReportLibrary
+@{
+    var header = new Header1 { Title = "Static test 1", Subtitle = "" };
+    var footer = new Footer1();
+}
 <report font-size="7pt">
 	<title>Static test 1</title>
     <content>
         <pageSequence orientation="portrait">
-            <htmlBlock>
-                <h1>Static test 1</h1>
-                <h4>Generated @DateTime.Now.ToString()</h4>
-            </htmlBlock>
+            @header.TransformText()
 
             <contentBlock>
                 <table type="DataGrid">
@@ -27,6 +35,8 @@
                     </tbody>
                 </table>
             </contentBlock>
+
+            @footer.TransformText()
         </pageSequence>
     </content>
 </report>

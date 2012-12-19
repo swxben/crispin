@@ -16,7 +16,7 @@ namespace swxben.reporting.ExampleReportLibrary
     using System.Linq;
     using System.Text;
     
-    #line 4 "..\..\Report1.cshtml"
+    #line 10 "..\..\Report1.cshtml"
     using swxben.reporting.ExampleReportLibrary;
     
     #line default
@@ -27,7 +27,7 @@ namespace swxben.reporting.ExampleReportLibrary
     {
 #line hidden
 
-        #line 6 "..\..\Report1.cshtml"
+        #line 12 "..\..\Report1.cshtml"
 
     public IEnumerable<Package> Packages { get; set; }
 
@@ -38,36 +38,55 @@ namespace swxben.reporting.ExampleReportLibrary
         {
 
 
-WriteLiteral("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n<!DOCTYPE report [\r\n]>\r\n");
+WriteLiteral("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n<!DOCTYPE report [\r\n    <!ENTITY nbsp \"&" +
+"#160;\">\r\n    <!ENTITY ldquo \"&#8220;\">\r\n    <!ENTITY lsquo \"&#8216;\">\r\n    <!ENT" +
+"ITY rdquo \"&#8221;\">\r\n    <!ENTITY rsquo \"&#8217;\">\r\n    <!ENTITY quot \"&#34;\">\r" +
+"\n]>\r\n");
 
 
 WriteLiteral("\r\n");
 
 
-WriteLiteral("\r\n\r\n<report>\r\n    <title>Report 1</title>\r\n    <content>\r\n        <pageSequence o" +
-"rientation=\"portrait\">\r\n            <htmlBlock>\r\n                <h1>Report 1</h" +
-"1>\r\n                <h4>Generated ");
+WriteLiteral("\r\n");
 
 
             
-            #line 16 "..\..\Report1.cshtml"
-                         Write(DateTime.Now.ToString());
+            #line 15 "..\..\Report1.cshtml"
+  
+    var header = new Header1
+    {
+        Title = "Report 1",
+        Subtitle = "Subtitle"
+    };
+    var footer = new Footer1();
+
 
             
             #line default
             #line hidden
-WriteLiteral(@"</h4>
-            </htmlBlock>
+WriteLiteral("<report>\r\n    <title>Report 1</title>\r\n    <content>\r\n        <pageSequence orien" +
+"tation=\"portrait\">\r\n            ");
+
+
+            
+            #line 27 "..\..\Report1.cshtml"
+       Write(header.TransformText());
+
+            
+            #line default
+            #line hidden
+WriteLiteral(@"
 
             <contentBlock>
-                <table type=""DataGrid"">
+                <table type=""DataGridPas2"">
                     <col width=""30%"" />
-                    <col width=""70%"" />
+                    <col width=""30%"" />
+                    <col width=""40%"" />
                     <thead>
                         <tr>
-                            <th>Origin</th>
-                            <th>Destination</th>
-                            <th>Weight (kg)</th>
+                            <th align=""left"">Origin</th>
+                            <th align=""left"">Destination</th>
+                            <th align=""right"">Weight (kg)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -75,7 +94,7 @@ WriteLiteral(@"</h4>
 
 
             
-            #line 31 "..\..\Report1.cshtml"
+            #line 42 "..\..\Report1.cshtml"
                          foreach (var package in Packages)
                         {
 
@@ -86,7 +105,7 @@ WriteLiteral("                            <tr>\r\n                              
 
 
             
-            #line 34 "..\..\Report1.cshtml"
+            #line 45 "..\..\Report1.cshtml"
                                Write(package.Origin);
 
             
@@ -96,18 +115,18 @@ WriteLiteral("</td>\r\n                                <td>");
 
 
             
-            #line 35 "..\..\Report1.cshtml"
+            #line 46 "..\..\Report1.cshtml"
                                Write(package.Destination);
 
             
             #line default
             #line hidden
-WriteLiteral("</td>\r\n                                <td>");
+WriteLiteral("</td>\r\n                                <td align=\"right\">");
 
 
             
-            #line 36 "..\..\Report1.cshtml"
-                               Write(package.Cost.ToString("C"));
+            #line 47 "..\..\Report1.cshtml"
+                                             Write(package.Cost.ToString("C"));
 
             
             #line default
@@ -116,14 +135,24 @@ WriteLiteral("</td>\r\n                            </tr>\r\n");
 
 
             
-            #line 38 "..\..\Report1.cshtml"
+            #line 49 "..\..\Report1.cshtml"
                         }
 
             
             #line default
             #line hidden
 WriteLiteral("                    </tbody>\r\n                </table>\r\n            </contentBloc" +
-"k>\r\n        </pageSequence>\r\n    </content>\r\n</report>\r\n\r\n");
+"k>\r\n\r\n            ");
+
+
+            
+            #line 54 "..\..\Report1.cshtml"
+       Write(footer.TransformText());
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n        </pageSequence>\r\n    </content>\r\n</report>\r\n\r\n");
 
 
         }

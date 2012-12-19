@@ -31,15 +31,41 @@ namespace swxben.reporting.ExampleApplication
             Console.WriteLine(xrpt);
             WriteToFile(xrpt, "xrpt.txt");
 
-            Console.WriteLine("Select converter:");
             int converterIndex = GetConverterIndex(converterFactory);
-            var convertedReport = converterFactory.Converters.ToList()[converterIndex - 1].ConvertToString(xrpt);
-            Console.WriteLine("Converted report:");
-            Console.WriteLine(convertedReport);
-            WriteToFile(convertedReport, "conv.txt");
+            int convertAction = GetConvertAction();
+            var converter = converterFactory.Converters.ToList()[converterIndex - 1];
+
+            if (convertAction == 1)
+            {
+                var convertedReport = converter.ConvertToString(xrpt);
+                Console.WriteLine("Converted report:");
+                Console.WriteLine(convertedReport);
+                WriteToFile(convertedReport, "conv.txt");
+            }
+            else if (convertAction == 2)
+            {
+                var convertedReport = converter.ConvertToBuffer(xrpt, "TEST");
+                Console.WriteLine("Converted to buffer.");
+                WriteToFile(convertedReport, "conv.bin");
+            }
 
             Console.WriteLine("Press any key to quit...");
             Console.Read();
+        }
+
+        private static int GetConvertAction()
+        {
+            while (true)
+            {
+                Console.WriteLine("Convert to (1) string or (2) byte array:");
+                int convertAction = 0;
+                var s = Console.ReadLine();
+                if (!int.TryParse(s.Trim(), out convertAction) || (convertAction != 1 && convertAction != 2))
+                {
+                    Console.WriteLine("Invalid converter action");
+                }
+                else return convertAction;
+            }
         }
 
         private static void WriteToFile(string xrpt, string filename)
@@ -49,8 +75,17 @@ namespace swxben.reporting.ExampleApplication
             Console.WriteLine("Wrote to " + filename);
         }
 
+        static void WriteToFile(byte[] buffer, string filename)
+        {
+            if (File.Exists(filename)) File.Delete(filename);
+            File.WriteAllBytes(filename, buffer);
+            Console.WriteLine("Wrote to " + filename);
+        }
+
         private static int GetConverterIndex(ReportConverterFactory converterFactory)
         {
+            Console.WriteLine("Select converter:");
+
             int converterIndex = 1;
             foreach (var converter in converterFactory.Converters)
             {

@@ -15,10 +15,12 @@ namespace swxben.reporting
         {
             var htmlXslt = GetXslt("swxben.reporting.xslt.XrptToHtml.xslt");
             var csvXslt = GetXslt("swxben.reporting.xslt.XrptToCsv.xslt");
+            var xslFoXslt = GetXslt("swxben.reporting.xslt.XrptToXslFo.xslt");
 
             Converters = new IReportConverter[] {
                 new HtmlReportConverter(htmlXslt),
-                new CsvReportConverter(csvXslt)
+                new CsvReportConverter(csvXslt),
+                new PdfReportConverter(xslFoXslt)
             };
         }
 

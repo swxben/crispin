@@ -10,5 +10,6 @@ namespace swxben.reporting
     {
         string ConvertToString(string xrpt);
         void ReplaceXslt(XslCompiledTransform xslt);
+        byte[] ConvertToBuffer(string xrpt, string reportName);
     }
 }

@@ -2,6 +2,7 @@
 using System.IO;
 using System.Xml;
 using System.Xml.Xsl;
+using System.Text;
 
 namespace swxben.reporting
 {
@@ -35,6 +36,11 @@ namespace swxben.reporting
                 return writer.ToString()
                     .Replace(Convert.ToString((char)160), "&nbsp;");
             }
+        }
+
+        public byte[] ConvertToBuffer(string xrpt, string reportName)
+        {
+            return Encoding.UTF8.GetBytes(ConvertToString(xrpt));
         }
     }
 }

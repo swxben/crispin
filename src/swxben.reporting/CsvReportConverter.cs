@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml.Xsl;
+﻿using System.Text;
 using System.Xml;
+using System.Xml.Xsl;
 using swxben.reporting.Helpers;
 
 namespace swxben.reporting
@@ -33,6 +30,11 @@ namespace swxben.reporting
 
                 return writer.ToString();
             }
+        }
+
+        public byte[] ConvertToBuffer(string xrpt, string reportName)
+        {
+            return Encoding.UTF8.GetBytes(ConvertToString(xrpt));
         }
     }
 }

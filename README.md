@@ -8,7 +8,9 @@ Reporting library, using Razor templates to generate HTML, Excel and PDF reports
 
 Although the example library and documentation uses Razor as the template engine, the report library itself will accept input from any source, including static XML. To use Razor, install the [Razor Generator](http://razorgenerator.codeplex.com/) VS extension first.
 
-**NOT YET** Install the engine via [NuGet](http://nuget.org/packages/swxben.reporting), either in Visual Studio (right-click project, Manage NuGet Packages, search for `swxen.reporting`) or via the package manager console using `Install-Package swxben.reporting`.
+Install the engine via [NuGet](http://nuget.org/packages/swxben.reporting), either in Visual Studio (right-click project, Manage NuGet Packages, search for `swxen.reporting`) or via the package manager console using `Install-Package swxben.reporting`.
+
+There is also a [Razor example package](http://nuget.org/packages/swxben.reporting.razor) which includes `swxben.reporting` and some examples to get started.
 
 
 ## Usage

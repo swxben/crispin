@@ -9,10 +9,13 @@
     <licenseUrl>http://creativecommons.org/licenses/by-sa/3.0/</licenseUrl>
     <projectUrl>https://github.com/swxben/swxben.reporting</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Reporting library, using Razor templates to generate HTML, Excel and PDF reports</description>
-    <summary>Reporting library, using Razor templates to generate HTML, Excel and PDF reports</summary>
+    <description>Reporting library that generates HTML, Excel and PDF reports from a single XML file</description>
+    <summary>Reporting library that generates HTML, Excel and PDF reports from a single XML file</summary>
     <releaseNotes>Initial release</releaseNotes>
-    <tags>reporting razor template html excel pdf xsl-fo</tags>
+    <tags>reporting template html excel pdf xsl-fo</tags>
+    <dependencies>
+      <dependency id="IKVM" version="7.2.4630.5"/>
+    </dependencies>
   </metadata>
   <files>
     <file src="src\swxben.reporting\bin\Release\swxben.reporting.dll" target="lib\net40\swxben.reporting.dll" />

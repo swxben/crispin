@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>swxben.reporting</id>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
     <title>swxben.reporting</title>
     <authors>Ben Scott</authors>
     <owners>Ben Scott</owners>
@@ -11,14 +11,13 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Reporting library that generates HTML, Excel and PDF reports from a single XML file</description>
     <summary>Reporting library that generates HTML, Excel and PDF reports from a single XML file</summary>
-    <releaseNotes>Initial release</releaseNotes>
+    <releaseNotes>Strip BOM from inputs, separate Apache FOP out into its own NuGet package</releaseNotes>
     <tags>reporting template html excel pdf xsl-fo</tags>
     <dependencies>
-      <dependency id="IKVM" version="7.2.4630.5"/>
+      <dependency id="swxben.fop" version="1.1"/>
     </dependencies>
   </metadata>
   <files>
     <file src="src\swxben.reporting\bin\Release\swxben.reporting.dll" target="lib\net40\swxben.reporting.dll" />
-    <file src="lib\fop-1.1.dll" target="lib\net40\fop-1.1.dll" />
   </files>
 </package>

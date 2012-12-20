@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 using System.Xml;
 using System.Xml.Xsl;
-using System.Text;
 using swxben.reporting.Helpers;
 
 namespace swxben.reporting
@@ -19,7 +19,7 @@ namespace swxben.reporting
         public string ConvertToString(string xrpt)
         {
             var xml = new XmlDocument();
-            xml.LoadXml(xrpt);
+            xml.LoadXml(StripByteOrderMark.Strip(xrpt));
 
             using (var writer = new StringWriter())
             using (var xmlWriter = new XmlTextWriter(writer))

@@ -17,7 +17,7 @@ namespace swxben.reporting
         public string ConvertToString(string xrpt)
         {
             var xml = new XmlDocument();
-            xml.LoadXml(xrpt);
+            xml.LoadXml(StripByteOrderMark.Strip(xrpt));
 
             using (var writer = new StringWriterWithEncoding(Encoding.UTF8))
             {

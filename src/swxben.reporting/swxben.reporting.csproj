@@ -120,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\FopInterface.cs" />
+    <Compile Include="Helpers\StripByteOrderMark.cs" />
     <Compile Include="Helpers\XsltLoader.cs" />
     <Compile Include="PdfReportConverter.cs" />
     <Compile Include="CsvReportConverter.cs" />

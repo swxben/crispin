@@ -28,7 +28,7 @@ namespace swxben.reporting
         public byte[] ConvertToBuffer(string xrpt, string reportName)
         {
             var xml = new XmlDocument();
-            xml.LoadXml(xrpt);
+            xml.LoadXml(StripByteOrderMark.Strip(xrpt));
             var tempImagePaths = HandleNonJpegImages(xml).ToList();
 
             var xslfoText = "";

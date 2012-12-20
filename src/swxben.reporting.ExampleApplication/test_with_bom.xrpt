@@ -1,0 +1,173 @@
+﻿﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE report [
+    <!ENTITY nbsp "&#160;">
+    <!ENTITY ldquo "&#8220;">
+    <!ENTITY lsquo "&#8216;">
+    <!ENTITY rdquo "&#8221;">
+    <!ENTITY rsquo "&#8217;">
+    <!ENTITY quot "&#34;">
+]>
+
+
+<report>
+    <title>Manifests</title>
+    <content>
+            <pageSequence orientation="landscape">
+                
+
+
+<htmlBlock>
+    <table>
+        <col width="28%" />
+        <col width="2%" />
+        <col width="14%" />
+        <col width="2%" />
+        <col width="46%" />
+        <col width="2%" />
+        <col width="6%" />
+        <tbody>
+            <tr>
+              <td background-color="#F2385A">&nbsp;</td>
+              <td>&nbsp;</td>
+              <td background-color="#F5A503">&nbsp;</td>
+              <td>&nbsp;</td>
+              <td background-color="#E9F1DF" align="right" padding="0.4cm">
+                <h2 space-before="0cm" space-after="0cm">Manifest</h2>
+                <h4 space-before="0cm" space-after="0cm"></h4>
+                <p>&nbsp;</p>
+              </td>
+              <td>&nbsp;</td>
+              <td background-color="#4AD9D9">&nbsp;</td>
+            </tr>
+            <tr padding="1.5cm"><td colspan="7">&nbsp;</td></tr>
+        </tbody>
+    </table>
+    <br />
+</htmlBlock>
+
+                <contentBlock>
+                    <table type="DataGrid">
+                        <col width="30%" />
+                        <col width="70%" />
+                        <thead>
+                            <tr>
+                                <th>a</th>
+                                <th>b</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>a</td>
+                                <td>b</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </contentBlock>
+
+            </pageSequence>
+            <pageSequence orientation="landscape">
+                
+
+
+<htmlBlock>
+    <table>
+        <col width="28%" />
+        <col width="2%" />
+        <col width="14%" />
+        <col width="2%" />
+        <col width="46%" />
+        <col width="2%" />
+        <col width="6%" />
+        <tbody>
+            <tr>
+              <td background-color="#F2385A">&nbsp;</td>
+              <td>&nbsp;</td>
+              <td background-color="#F5A503">&nbsp;</td>
+              <td>&nbsp;</td>
+              <td background-color="#E9F1DF" align="right" padding="0.4cm">
+                <h2 space-before="0cm" space-after="0cm">Manifest</h2>
+                <h4 space-before="0cm" space-after="0cm"></h4>
+                <p>&nbsp;</p>
+              </td>
+              <td>&nbsp;</td>
+              <td background-color="#4AD9D9">&nbsp;</td>
+            </tr>
+            <tr padding="1.5cm"><td colspan="7">&nbsp;</td></tr>
+        </tbody>
+    </table>
+    <br />
+</htmlBlock>
+
+
+<htmlBlock>
+    <table>
+        <col width="28%" />
+        <col width="2%" />
+        <col width="14%" />
+        <col width="2%" />
+        <col width="46%" />
+        <col width="2%" />
+        <col width="6%" />
+        <tbody>
+            <tr>
+              <td background-color="#F2385A">&nbsp;</td>
+              <td>&nbsp;</td>
+              <td background-color="#F5A503">&nbsp;</td>
+              <td>&nbsp;</td>
+              <td background-color="#E9F1DF" align="right" padding="0.4cm">
+                <h2 space-before="0cm" space-after="0cm">Manifest</h2>
+                <h4 space-before="0cm" space-after="0cm"></h4>
+                <p>&nbsp;</p>
+              </td>
+              <td>&nbsp;</td>
+              <td background-color="#4AD9D9">&nbsp;</td>
+            </tr>
+            <tr padding="1.5cm"><td colspan="7">&nbsp;</td></tr>
+        </tbody>
+    </table>
+    <br />
+</htmlBlock>
+
+                <contentBlock>
+                    <table type="DataGrid">
+                        <col width="30%" />
+                        <col width="70%" />
+                        <thead>
+                            <tr>
+                                <th>a</th>
+                                <th>b</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>a</td>
+                                <td>b</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </contentBlock>
+
+            </pageSequence>
+        ﻿
+
+<footer>
+    <div>
+        <hr />
+        <table>
+            <col width="50%" />
+            <col width="50%" />
+            <tbody>
+                <tr>
+                    <td align="left">
+                        <h4>swxben.reporting</h4>
+                    </td>
+                    <td align="right">
+                        <p><small>Generated 12:56:43 - 20/12/2012</small></p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</footer>
+    </content>
+</report>

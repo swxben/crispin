@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using RazorGenerator.Templating;
@@ -26,7 +27,11 @@ namespace swxben.reporting.ExampleApplication
                  new TableBackgroundTest(),
                  new LeftPaddedTable()
             };
-            var converterFactory = new ReportConverterFactory();
+            var converters = new IReportConverter[] {
+                new CsvReportConverter(),
+                new HtmlReportConverter(),
+                new PdfReportConverter()
+            };
 
             int reportIndex = GetReportIndex(reports);
             var xrpt = reports[reportIndex - 1].TransformText();
@@ -34,9 +39,9 @@ namespace swxben.reporting.ExampleApplication
             Console.WriteLine(xrpt);
             WriteToFile(xrpt, "xrpt.txt");
 
-            int converterIndex = GetConverterIndex(converterFactory);
+            int converterIndex = GetConverterIndex(converters);
             int convertAction = GetConvertAction();
-            var converter = converterFactory.Converters.ToList()[converterIndex - 1];
+            var converter = converters.ToList()[converterIndex - 1];
 
             if (convertAction == 1)
             {
@@ -53,7 +58,6 @@ namespace swxben.reporting.ExampleApplication
                 WriteToFile(convertedReport, dest);
             }
 
-
             Console.WriteLine("Press any key to quit...");
             Console.ReadKey();
         }
@@ -66,7 +70,7 @@ namespace swxben.reporting.ExampleApplication
                 int convertAction = 0;
                 var s = Console.ReadLine();
                 if (!int.TryParse(s.Trim(), out convertAction) || (
-                    convertAction != 1 && 
+                    convertAction != 1 &&
                     convertAction != 2 &&
                     convertAction != 3))
                 {
@@ -90,12 +94,12 @@ namespace swxben.reporting.ExampleApplication
             Console.WriteLine("Wrote to " + filename);
         }
 
-        private static int GetConverterIndex(ReportConverterFactory converterFactory)
+        private static int GetConverterIndex(IEnumerable<IReportConverter> converters)
         {
             Console.WriteLine("Select converter:");
 
             int converterIndex = 1;
-            foreach (var converter in converterFactory.Converters)
+            foreach (var converter in converters)
             {
                 Console.WriteLine("    " + converterIndex.ToString() + ". " + converter.GetType().ToString());
                 converterIndex++;
@@ -105,7 +109,7 @@ namespace swxben.reporting.ExampleApplication
             while (true)
             {
                 var s = Console.ReadLine();
-                if (!int.TryParse(s.Trim(), out converterIndex) || converterIndex < 1 || converterIndex > converterFactory.Converters.Count())
+                if (!int.TryParse(s.Trim(), out converterIndex) || converterIndex < 1 || converterIndex > converters.Count())
                 {
                     Console.WriteLine("Invalid converter");
                 }

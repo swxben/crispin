@@ -1,25 +1,19 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Xml;
 using System.Xml.Xsl;
-using System.Collections.Generic;
-using System.Linq;
 using swxben.reporting.Helpers;
 
 namespace swxben.reporting
 {
     public class PdfReportConverter : IReportConverter
     {
-        XslCompiledTransform _xslt;
-
-        public PdfReportConverter(XslCompiledTransform xslt)
-        {
-            _xslt = xslt;
-        }
+        XslCompiledTransform _xslt = XsltLoader.LoadFromAssembly("swxben.reporting.xslt.XrptToXslFo.xslt");
 
         public void ReplaceXslt(XslCompiledTransform xslt)
         {
@@ -36,7 +30,7 @@ namespace swxben.reporting
             var xml = new XmlDocument();
             xml.LoadXml(xrpt);
             var tempImagePaths = HandleNonJpegImages(xml).ToList();
-            
+
             var xslfoText = "";
 
             using (var writer = new StringWriter())
@@ -124,7 +118,7 @@ namespace swxben.reporting
             if (codec == null) throw new Exception("Can't find codec for image/jpeg MIME type");
 
             var destPath = Path.GetTempFileName();
-            
+
             image.Save(destPath, ImageFormat.Jpeg);
 
             return destPath;

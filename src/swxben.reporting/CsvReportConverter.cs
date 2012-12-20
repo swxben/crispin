@@ -7,12 +7,7 @@ namespace swxben.reporting
 {
     public class CsvReportConverter : IReportConverter
     {
-        XslCompiledTransform _xslt;
-
-        public CsvReportConverter(XslCompiledTransform xslt)
-        {
-            _xslt = xslt;
-        }
+        XslCompiledTransform _xslt = XsltLoader.LoadFromAssembly("swxben.reporting.xslt.XrptToCsv.xslt");
 
         public void ReplaceXslt(XslCompiledTransform xslt)
         {

@@ -3,17 +3,13 @@ using System.IO;
 using System.Xml;
 using System.Xml.Xsl;
 using System.Text;
+using swxben.reporting.Helpers;
 
 namespace swxben.reporting
 {
     public class HtmlReportConverter : IReportConverter
     {
-        XslCompiledTransform _xslt;
-
-        public HtmlReportConverter(XslCompiledTransform xslt)
-        {
-            _xslt = xslt;
-        }
+        XslCompiledTransform _xslt = XsltLoader.LoadFromAssembly("swxben.reporting.xslt.XrptToHtml.xslt");
 
         public void ReplaceXslt(XslCompiledTransform newXslt)
         {

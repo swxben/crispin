@@ -16,5 +16,6 @@
   </metadata>
   <files>
     <file src="src\swxben.reporting\bin\Release\swxben.reporting.dll" target="lib\net40\swxben.reporting.dll" />
+    <file src="lib\fop-1.1.dll" target="lib\net40\fop-1.1.dll" />
   </files>
 </package>

@@ -1269,8 +1269,8 @@
     </fo:inline>
   </xsl:template>
 
-  <!-- Del (strike) -->
-  <xsl:template match="del">
+  <!-- Del or strike -->
+  <xsl:template match="del|strike">
     <fo:inline text-decoration="line-through">
       <xsl:apply-templates />
     </fo:inline>

@@ -34,6 +34,21 @@ Either create a new library project or use an existing project. The report templ
 The XML is a bit verbose because the converter uses the same XML to generate the output in several methods including XSL-FO to produce PDFs which needs data about the layout of the resulting document.
 
 
+### Reporting service
+
+The `ReportingService` class contains helpers for transforming and managing reports. It implements `IReportingService` for DI goodyness:
+
+    IReportingService reportingService = new ReportingService();
+
+#### PDF functions
+
+##### OpenAsPdf
+
+Saves the report to a temporary file then opens it using `Process.Start`.
+
+    reportingService.OpenAsPdf(report.TransformText(), "Name of report");
+
+
 ## Contribute
 
 If you want to contribute to this project, start by forking the repo: <https://github.com/swxben/swxben.reporting>. Create an issue if applicable, create a branch in your fork, and create a pull request when it's ready. Thanks!

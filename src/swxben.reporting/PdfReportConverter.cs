@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Xml;
+using System.Xml.XPath;
 using System.Xml.Xsl;
 using swxben.reporting.Helpers;
 
@@ -22,7 +24,9 @@ namespace swxben.reporting
 
         public string ConvertToString(string xrpt)
         {
-            throw new NotImplementedException("The PDF converter only supports converting to a byte array");
+            var xml = new XmlDocument();
+            xml.LoadXml(StripByteOrderMark.Strip(xrpt));
+            return GetXslfoText(xml);
         }
 
         public byte[] ConvertToBuffer(string xrpt, string reportName)
@@ -31,8 +35,17 @@ namespace swxben.reporting
             xml.LoadXml(StripByteOrderMark.Strip(xrpt));
             var tempImagePaths = HandleNonJpegImages(xml).ToList();
 
-            var xslfoText = "";
+            var xslfoText = GetXslfoText(xml);
 
+            var pdfData = GetPdfData(xslfoText, reportName);
+
+            DeleteTempImages(tempImagePaths);
+
+            return pdfData;
+        }
+
+        private string GetXslfoText(IXPathNavigable xml)
+        {
             using (var writer = new StringWriter())
             using (var xmlWriter = new XmlTextWriter(writer))
             {
@@ -41,21 +54,15 @@ namespace swxben.reporting
                 xmlWriter.WriteStartDocument();
                 _xslt.Transform(xml, null, xmlWriter, new XmlUrlResolver());
 
-                xslfoText = writer.ToString()
-                    .Replace(Convert.ToString((char)160), "&#160;")
-                    .Replace("&nbsp;", "&#160;")
-                    .Replace("&ldquo;", "&#8220;")
-                    .Replace("&lsquo;", "&#8216;")
-                    .Replace("&rdquo;", "&#8221;")
-                    .Replace("&rsquo;", "&#8217;")
-                    .Replace("&quot;", "&#34;");
+                return writer.ToString()
+                                  .Replace(Convert.ToString((char) 160), "&#160;")
+                                  .Replace("&nbsp;", "&#160;")
+                                  .Replace("&ldquo;", "&#8220;")
+                                  .Replace("&lsquo;", "&#8216;")
+                                  .Replace("&rdquo;", "&#8221;")
+                                  .Replace("&rsquo;", "&#8217;")
+                                  .Replace("&quot;", "&#34;");
             }
-
-            var pdfData = GetPdfData(xslfoText, reportName);
-
-            DeleteTempImages(tempImagePaths);
-
-            return pdfData;
         }
 
         static void DeleteTempImages(IEnumerable<string> tempImagePaths)
@@ -112,11 +119,8 @@ namespace swxben.reporting
 
         private static string ConvertUrlEncodedImageToJpeg(string uri)
         {
-            var buffer = Convert.FromBase64String(uri.Substring(uri.IndexOf(",") + 1, uri.Length - uri.IndexOf(",") - 1));
+            var buffer = Convert.FromBase64String(uri.Substring(uri.IndexOf(",", StringComparison.Ordinal) + 1, uri.Length - uri.IndexOf(",", StringComparison.Ordinal) - 1));
             var image = Image.FromStream(new MemoryStream(buffer));
-            var codec = GetImageEncoder("image/jpeg");
-            if (codec == null) throw new Exception("Can't find codec for image/jpeg MIME type");
-
             var destPath = Path.GetTempFileName();
 
             image.Save(destPath, ImageFormat.Jpeg);
@@ -124,25 +128,15 @@ namespace swxben.reporting
             return destPath;
         }
 
-        private static ImageCodecInfo GetImageEncoder(string mimeType)
-        {
-            return ImageCodecInfo.GetImageEncoders().FirstOrDefault(ici => ici.MimeType == mimeType);
-        }
-
         private static string ConvertPngToJpeg(string sourceUrl)
         {
-            var destPath = Path.GetTempFileName();
-            var webClient = new WebClient();
-
-            using (var stream = webClient.OpenRead(sourceUrl))
+            using (var stream = new WebClient().OpenRead(sourceUrl))
             {
                 var image = Image.FromStream(stream);
-                var codec = GetImageEncoder("image/jpeg");
-
+                var destPath = Path.GetTempFileName();
                 image.Save(destPath, ImageFormat.Jpeg);
+                return destPath;
             }
-
-            return destPath;
         }
     }
 }

@@ -27,7 +27,8 @@ namespace swxben.reporting.ExampleApplication
                  new TableBackgroundTest(),
                  new LeftPaddedTable(),
                  new swxben_reporting_razor_example(),
-                 new test_with_bom_report()
+                 new test_with_bom_report(),
+                 new RightAlignedNestedTable()
             };
             var converters = new IReportConverter[] {
                 new CsvReportConverter(),

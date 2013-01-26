@@ -1,0 +1,96 @@
+# XRPT Relax NG schema
+
+grammar {
+	start = element report { title & content }
+	title = element title { text }
+	content = element content { pageSequence* }
+	pageSequence = element pageSequence {
+		attribute orientation { "portrait", "landscape" },
+		pageSequenceContent
+	}
+	pageSequenceContent = htmlBlock* | contentBlock*
+	htmlBlock = element htmlBlock { 
+		set-alignment |
+		set-block-styles |
+		blockContent*
+	}
+	contentBlock = element contentBlock { 
+		set-alignment |
+		set-block-styles |
+		blockContent*
+	}
+
+	blockContent = 
+		table* | 
+		blockquote*
+
+	table = element table { col* | thead | tbody | tfoot }
+	col = element col { 
+		attribute width { text }
+	}
+	thead = element thead { tr* }
+	tbody = element tbody { tr* }
+	tfoot = element tfoot { tr* }
+	tr = element tr { th* | td* }
+	td = element td { table-cell-content }
+	th = element th { table-cell-content }
+	table-cell-content { set-block-styles* }
+
+	set-block-styles =
+		attribute colspan { xsd:integer } |
+		attribute rowspan { xsd:integer } |
+		attribute background-color { text } |
+		attribute color { text } |
+		attribute height { text } |
+		attribute border { xsd:boolean } |
+		attribute border-top { xsd:boolean } |
+		attribute border-left { xsd:boolean } |
+		attribute border-bottom { xsd:boolean } |
+		attribute border-right { xsd:boolean } |
+		attribute border-top-style { text } |
+		attribute border-top-width { text } |
+		attribute border-top-color { text } |
+		attribute border-left-style { text } |
+		attribute border-left-width { text } |
+		attribute border-left-color { text } |
+		attribute border-bottom-style { text } |
+		attribute border-bottom-width { text } |
+		attribute border-bottom-color { text } |
+		attribute border-right-style { text } |
+		attribute border-right-width { text } |
+		attribute border-style { text } |
+		attribute border-width { text } |
+		attribute border-color { text } |
+		attribute padding-top { text } |
+		attribute padding-left { text } |
+		attribute padding-bottom { text } |
+		attribute padding-right { text } |
+		attribute padding { text } |
+		attribute font-family { text } |
+		attribute font-size { text } |
+		attribute font-weight { text } |
+		attribute font-style { text } |
+		attribute text-decoration { text }
+
+	blockquote = element blockquote { blockContent* }
+	h1 = element h1 { header-styles* }
+	header-styles =
+		attribute space-before { text } |
+		attribute space-after { text } |
+		attribute font-size { text } |
+		set-alignment
+
+	set-alignment = attribute align { "left", "center", "right", "justify" }
+
+}
+
+
+
+element report {
+	attribute orientation 
+	element title { text },
+	element content {
+
+	}
+}
+

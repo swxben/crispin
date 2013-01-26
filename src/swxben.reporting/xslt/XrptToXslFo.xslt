@@ -267,7 +267,8 @@
                 <xsl:value-of select="/report/@font-size" />
               </xsl:when>
               <xsl:otherwise>
-                <xsl:value-of select="$pageFontSize" />pt
+                <xsl:value-of select="$pageFontSize" />
+                <xsl:text>pt</xsl:text>
               </xsl:otherwise>
             </xsl:choose>
           </xsl:attribute>
@@ -286,7 +287,7 @@
                   <xsl:value-of select="/report/title/." />
                 </fo:block>
                 <fo:block>
-                  Page <fo:page-number />
+                  <xsl:text>Page </xsl:text><fo:page-number />
                 </fo:block>
               </fo:block>
             </xsl:if>
@@ -824,10 +825,12 @@
         <fo:block>
           <xsl:choose>
             <xsl:when test="../@type != ''">
-              <xsl:number format="{../@type}"/>.
+              <xsl:number format="{../@type}"/>
+              <xsl:text>.</xsl:text>
             </xsl:when>
             <xsl:otherwise>
-              <xsl:number format="1"/>.
+              <xsl:number format="1"/>
+              <xsl:text>.</xsl:text>
             </xsl:otherwise>
           </xsl:choose>
         </fo:block>
@@ -929,7 +932,8 @@
             <xsl:attribute name="column-width">
               <xsl:choose>
                 <xsl:when test="count(ancestor::table) != 0 and @ignorenesting!='true'">
-                  <xsl:value-of select="$nestedDataTablePadding" />cm
+                  <xsl:value-of select="$nestedDataTablePadding" />
+                  <xsl:text>cm</xsl:text>
                 </xsl:when>
                 <xsl:otherwise>0em</xsl:otherwise>
               </xsl:choose>
@@ -940,7 +944,8 @@
             <xsl:attribute name="column-width">
               <xsl:choose>
                 <xsl:when test="count(ancestor::table) != 0 and @ignorenesting!='true'">
-                  <xsl:value-of select="$nestedDataTablePadding" />cm
+                  <xsl:value-of select="$nestedDataTablePadding" />
+                  <xsl:text>cm</xsl:text>
                 </xsl:when>
                 <xsl:otherwise>0em</xsl:otherwise>
               </xsl:choose>
@@ -957,7 +962,8 @@
                   <xsl:choose>
                     <xsl:when test="@type='DataGrid' or @type='DataGridPas2'">
                       <xsl:attribute name="margin-bottom">
-                        <xsl:value-of select="$pageFontSize" />pt
+                        <xsl:value-of select="$pageFontSize" />
+                        <xsl:text>pt</xsl:text>
                       </xsl:attribute>
                     </xsl:when>
                     <xsl:otherwise></xsl:otherwise>
@@ -975,6 +981,7 @@
                     </xsl:when>
                   </xsl:choose>
                   <xsl:call-template name="set-block-styles" />
+                  <xsl:call-template name="set-alignment"/>
                   <xsl:apply-templates />
                 </fo:table>
 
@@ -988,12 +995,13 @@
       </xsl:when>
       <xsl:otherwise>
 
-        <!-- not an embedded table, just shtick it out -->
+        <!-- not an embedded table -->
         <fo:table>
           <xsl:choose>
             <xsl:when test="@type='DataGrid' or @type='DataGridPas2'">
               <xsl:attribute name="margin-bottom">
-                <xsl:value-of select="$pageFontSize" />pt
+                <xsl:value-of select="$pageFontSize" />
+                <xsl:text>pt</xsl:text>
               </xsl:attribute>
             </xsl:when>
             <xsl:otherwise></xsl:otherwise>
@@ -1010,6 +1018,7 @@
               <xsl:attribute name="border-width">0.5pt</xsl:attribute>
             </xsl:when>
           </xsl:choose>
+          <xsl:call-template name="set-alignment"/>
           <xsl:call-template name="set-block-styles" />
           <xsl:apply-templates />
         </fo:table>
@@ -1035,11 +1044,13 @@
                     <xsl:choose>
                       <xsl:when test="ancestor::pageSequence/@sequence='leader'">
                         <!-- leader -->
-                        <xsl:value-of select="number(translate(@width,'%','')) div 100 * ($contentWidthLandscapeLeader - ((count(ancestor::table)-1) * 2 * $nestedDataTablePadding))"/>cm
+                        <xsl:value-of select="number(translate(@width,'%','')) div 100 * ($contentWidthLandscapeLeader - ((count(ancestor::table)-1) * 2 * $nestedDataTablePadding))"/>
+                        <xsl:text>cm</xsl:text>
                       </xsl:when>
                       <xsl:otherwise>
                         <!-- normal -->
-                        <xsl:value-of select="number(translate(@width,'%','')) div 100 * ($contentWidthLandscape - ((count(ancestor::table)-1) * 2 * $nestedDataTablePadding))"/>cm
+                        <xsl:value-of select="number(translate(@width,'%','')) div 100 * ($contentWidthLandscape - ((count(ancestor::table)-1) * 2 * $nestedDataTablePadding))"/>
+                        <xsl:text>cm</xsl:text>
                       </xsl:otherwise>
                     </xsl:choose>
                   </xsl:when>
@@ -1048,11 +1059,13 @@
                     <xsl:choose>
                       <xsl:when test="ancestor::pageSequence/@sequence='leader'">
                         <!-- leader -->
-                        <xsl:value-of select="number(translate(@width,'%','')) div 100 * ($contentWidthPortraitLeader - ((count(ancestor::table)-1) * 2 * $nestedDataTablePadding))"/>cm
+                        <xsl:value-of select="number(translate(@width,'%','')) div 100 * ($contentWidthPortraitLeader - ((count(ancestor::table)-1) * 2 * $nestedDataTablePadding))"/>
+                        <xsl:text>cm</xsl:text>
                       </xsl:when>
                       <xsl:otherwise>
                         <!-- normal -->
-                        <xsl:value-of select="number(translate(@width,'%','')) div 100 * ($contentWidthPortrait - ((count(ancestor::table)-1) * 2 * $nestedDataTablePadding))"/>cm
+                        <xsl:value-of select="number(translate(@width,'%','')) div 100 * ($contentWidthPortrait - ((count(ancestor::table)-1) * 2 * $nestedDataTablePadding))"/>
+                        <xsl:text>cm</xsl:text>
                       </xsl:otherwise>
                     </xsl:choose>
                   </xsl:otherwise>
@@ -1060,7 +1073,8 @@
               </xsl:when>
               <!-- if width is a number (no units) assume width in 1/72" (a pixel @ 72dpi) -->
               <xsl:when test="@width &lt;= 0 or @width >= 0">
-                <xsl:value-of select="floor(@width div 72)"/>in
+                <xsl:value-of select="floor(@width div 72)"/>
+                <xsl:text>in</xsl:text>
               </xsl:when>
               <!-- otherwise just drop the width value straight in -->
               <xsl:otherwise>
@@ -1212,19 +1226,19 @@
 
   <xsl:template match="img">
     <fo:external-graphic>
-      <xsl:attribute name="src">
-        url('<xsl:value-of select="@src"/>')
-      </xsl:attribute>
+      <xsl:attribute name="src">url('<xsl:value-of select="@src"/>')</xsl:attribute>
 
       <!-- If the img tag uses width and height, assume that it's html-like px -->
       <xsl:if test="@width">
         <xsl:attribute name="content-width">
-          <xsl:value-of select="@width"/>px
+          <xsl:value-of select="@width"/>
+          <xsl:text>px</xsl:text>
         </xsl:attribute>
       </xsl:if>
       <xsl:if test="@height">
         <xsl:attribute name="content-height">
-          <xsl:value-of select="@height"/>px
+          <xsl:value-of select="@height"/>
+          <xsl:text>px</xsl:text>
         </xsl:attribute>
       </xsl:if>
 

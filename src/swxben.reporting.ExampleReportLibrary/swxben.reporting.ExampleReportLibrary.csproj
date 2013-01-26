@@ -45,6 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RightAlignedNestedTable.generated.cs">
+      <DependentUpon>RightAlignedNestedTable.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="swxben.reporting.razor.example.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -55,6 +60,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CustomPageSetupTest.cshtml</DependentUpon>
     </Compile>
+    <None Include="RightAlignedNestedTable.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>RightAlignedNestedTable.generated.cs</LastGenOutput>
+    </None>
     <None Include="swxben.reporting.razor.example.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>swxben.reporting.razor.example.generated.cs</LastGenOutput>

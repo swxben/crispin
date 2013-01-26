@@ -2,16 +2,16 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>swxben.fop</id>
-    <version>1.1</version>
+    <version>1.1.1</version>
     <title>swxben.fop</title>
-    <authors>Ben Scott</authors>
-    <owners>Ben Scott</owners>
+    <authors>Software By Ben, Ben Scott, swxben, belfryimages</authors>
+    <owners>Software By Ben, Ben Scott, swxben, belfryimages</owners>
     <licenseUrl>http://xmlgraphics.apache.org/fop/license.html</licenseUrl>
     <projectUrl>http://xmlgraphics.apache.org/fop/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Apache FOP, converted to .NET using IKVM</description>
     <summary>Apache FOP, converted to .NET using IKVM</summary>
-    <releaseNotes>Initial release</releaseNotes>
+    <releaseNotes>Clean up some of the XSL-FO XSLT</releaseNotes>
     <tags>xsl-fo apache fop ikvm</tags>
     <dependencies>
       <dependency id="IKVM" version="7.2.4630.5"/>

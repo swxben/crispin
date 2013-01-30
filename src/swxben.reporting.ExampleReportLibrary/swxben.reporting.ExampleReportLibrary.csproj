@@ -33,8 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="RazorGenerator.Templating">
-      <HintPath>..\..\packages\RazorGenerator.Templating.1.5.0.0\lib\net40\RazorGenerator.Templating.dll</HintPath>
+    <Reference Include="RazorGenerator.Templating, Version=1.5.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\RazorGenerator.Templating.1.5.2.0\lib\net40\RazorGenerator.Templating.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -45,10 +46,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="system_dot_web_tests.generated.cs">
+      <DependentUpon>system_dot_web_tests.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="RightAlignedNestedTable.generated.cs">
       <DependentUpon>RightAlignedNestedTable.cshtml</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="SampleTemplate.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SampleTemplate.cshtml</DependentUpon>
     </Compile>
     <Compile Include="swxben.reporting.razor.example.generated.cs">
       <AutoGen>True</AutoGen>
@@ -60,9 +71,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CustomPageSetupTest.cshtml</DependentUpon>
     </Compile>
+    <None Include="system_dot_web_tests.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>system_dot_web_tests.generated.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
     <None Include="RightAlignedNestedTable.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>RightAlignedNestedTable.generated.cs</LastGenOutput>
+    </None>
+    <None Include="SampleTemplate.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SampleTemplate.generated.cs</LastGenOutput>
     </None>
     <None Include="swxben.reporting.razor.example.cshtml">
       <Generator>RazorGenerator</Generator>
@@ -126,11 +146,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
     <None Include="Report1.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>Report1.generated.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\swxben.reporting.System.Web\swxben.reporting.System.Web.csproj">
+      <Project>{58C7F8EC-8208-4394-ADF8-2F2ED7BD654B}</Project>
+      <Name>swxben.reporting.System.Web</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

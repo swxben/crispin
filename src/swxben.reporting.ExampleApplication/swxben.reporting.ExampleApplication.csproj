@@ -37,8 +37,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="RazorGenerator.Templating">
-      <HintPath>..\..\packages\RazorGenerator.Templating.1.5.0.0\lib\net40\RazorGenerator.Templating.dll</HintPath>
+    <Reference Include="RazorGenerator.Templating, Version=1.5.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\RazorGenerator.Templating.1.5.2.0\lib\net40\RazorGenerator.Templating.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -60,6 +61,10 @@
       <Project>{A3D57DFF-7D25-46E8-A353-2DEC5DFD37A5}</Project>
       <Name>swxben.reporting.ExampleReportLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\swxben.reporting.System.Web\swxben.reporting.System.Web.csproj">
+      <Project>{58C7F8EC-8208-4394-ADF8-2F2ED7BD654B}</Project>
+      <Name>swxben.reporting.System.Web</Name>
+    </ProjectReference>
     <ProjectReference Include="..\swxben.reporting\swxben.reporting.csproj">
       <Project>{564E91A9-390F-452F-A5E3-A2DF50EC8E75}</Project>
       <Name>swxben.reporting</Name>
@@ -67,8 +72,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="packages.config" />
+    <Compile Include="SampleTemplate.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SampleTemplate.cshtml</DependentUpon>
+    </Compile>
     <Compile Include="swxben.reporting.razor.example.runner.cs" />
+    <None Include="packages.config" />
+    <None Include="SampleTemplate.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SampleTemplate.generated.cs</LastGenOutput>
+    </None>
     <None Include="test_with_bom.xrpt" />
     <Compile Include="TestSuiteOne.cs" />
     <Compile Include="TestSuiteTwo.cs" />

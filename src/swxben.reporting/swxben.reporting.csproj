@@ -138,7 +138,9 @@
     <EmbeddedResource Include="xslt\XrptToHtml.xslt" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="xslt\XrptToXslFo.xslt" />
+    <EmbeddedResource Include="xslt\XrptToXslFo.xslt">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

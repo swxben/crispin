@@ -10,7 +10,7 @@ Although the example library and documentation uses Razor as the template engine
 
 Install the engine via [NuGet](http://nuget.org/packages/swxben.reporting), either in Visual Studio (right-click project, Manage NuGet Packages, search for `swxen.reporting`) or via the package manager console using `Install-Package swxben.reporting`.
 
-There is also a [Razor example package](http://nuget.org/packages/swxben.reporting.razor) which includes `swxben.reporting` and some examples to get started.
+There is also a [Razor example package](http://nuget.org/packages/swxben.reporting.razor) which includes `swxben.reporting` and some examples to get started. A [swxben.reporting.System.Web package](http://nuget.org/packages/swxben.reporting.System.Web) is used to replace basic Razor features found via `System.Web` such as automatic HTML encoding and `Html.Raw()` that aren't found in Razor Generator's template library without having to depend on `System.Web`.
 
 
 ## Usage
@@ -47,6 +47,38 @@ The `ReportingService` class contains helpers for transforming and managing repo
 Saves the report to a temporary file then opens it using `Process.Start`.
 
     reportingService.OpenAsPdf(report.TransformText(), "Name of report");
+
+
+### swxben.reporting.System.Web
+
+Minimal workarounds to support `System.Web` assumptions built in to Razor features such as `Html.Raw()`, automatic HTML encoding (eg `@("<em>&</em>")), helpers and `IHtmlString`. Make the template inherit from `System.Web.Razor.CustomRazorTemplateBase` to get the features to work properly.
+
+	@* Generator: Template *@<?xml version="1.0" encoding="UTF-8" ?>
+	@inherits System.Web.Razor.CustomRazorTemplateBase
+	...
+	@helper Embolden(string s) {
+		<strong>@s</strong>
+	}
+	@{
+		var subtemplate = new Subtemplate();
+	}
+	...
+	<p>Escape plain at values: @("<em>not emphasised</em>")</p> 
+	<p>Html.Raw(): @Html.Raw("<em>emphasised</em>")</p>
+	<p>Embolden helper: @Embolden("emboldened")</p>
+	<p>@Html.Raw(subtemplate.TransformText())</p>
+
+#### System.Web.Mvc.HtmlHelper
+
+A protected instance of `System.Web.Mvc.HtmlHelper` is exposed in `System.Web.Razor.CustomRazorTemplateBase` as `Html`. The only method implemented is `Raw()` which just returns the input as a `IHtmlString` to avoid automatic HTML encoding.
+
+#### System.Web.WebPages.HelperResult
+
+This is used in the class generated from the Razor template to implement helpers.
+
+#### System.Web.IHtmlString
+
+See <http://msdn.microsoft.com/en-us/library/system.web.ihtmlstring.aspx>.
 
 
 ## Contribute

@@ -1,0 +1,34 @@
+﻿@* Generator: Template *@<?xml version="1.0" encoding="UTF-8" ?>
+@inherits System.Web.Razor.CustomRazorTemplateBase
+<!DOCTYPE report [
+    <!ENTITY nbsp "&#160;">
+    <!ENTITY ldquo "&#8220;">
+    <!ENTITY lsquo "&#8216;">
+    <!ENTITY rdquo "&#8221;">
+    <!ENTITY rsquo "&#8217;">
+    <!ENTITY quot "&#34;">
+]>
+@using crispin.ExampleReportLibrary
+@{
+    var header = new Header1 { Title = "I Can't Believe It's Not System.Web!", Subtitle = "" };
+    var footer = new Footer1();
+}
+@helper Embolden(string s) {
+    <strong>@s</strong>
+}
+<report font-size="7pt">
+	<title>Static test 1</title>
+    <content>
+        <pageSequence orientation="portrait">
+            @Html.Raw(header.TransformText())
+
+            <htmlBlock>
+                <p>Escape plain at values: @("<em>not emphasised</em>")</p>
+                <p>Html.Raw(): @Html.Raw("<em>emphasised</em>")</p>
+                <p>Embolden helper: @Embolden("emboldened")</p>
+            </htmlBlock>
+
+            @Html.Raw(footer.TransformText())
+        </pageSequence>
+    </content>
+</report>

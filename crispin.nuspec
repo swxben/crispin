@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>crispin</id>
+    <version>2.0.0</version>
+    <title>crispin</title>
+    <authors>Software By Ben, Ben Scott, swxben, belfryimages</authors>
+    <owners>Software By Ben, Ben Scott, swxben, belfryimages</owners>
+    <licenseUrl>http://creativecommons.org/licenses/by-sa/3.0/</licenseUrl>
+    <projectUrl>https://github.com/swxben/crispin</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Reporting library that generates HTML, Excel and PDF reports from a single XML file</description>
+    <summary>Reporting library that generates HTML, Excel and PDF reports from a single XML file</summary>
+    <releaseNotes>Renamed to Crispin</releaseNotes>
+    <tags>reporting template html excel pdf xsl-fo</tags>
+    <dependencies>
+      <dependency id="crispin.fop" version="1.1"/>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="src\crispin\bin\Release\crispin.dll" target="lib\net40\crispin.dll" />
+  </files>
+</package>

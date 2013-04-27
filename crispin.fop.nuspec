@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>crispin.fop</id>
+    <version>2.0.0</version>
+    <title>crispin.fop</title>
+    <authors>Software By Ben, Ben Scott, swxben, belfryimages</authors>
+    <owners>Software By Ben, Ben Scott, swxben, belfryimages</owners>
+    <licenseUrl>http://xmlgraphics.apache.org/fop/license.html</licenseUrl>
+    <projectUrl>http://xmlgraphics.apache.org/fop/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Apache FOP, converted to .NET using IKVM</description>
+    <summary>Apache FOP, converted to .NET using IKVM</summary>
+    <releaseNotes>Changed name to Crispin</releaseNotes>
+    <tags>xsl-fo apache fop ikvm crispin</tags>
+    <dependencies>
+      <dependency id="IKVM" version="7.2.4630.5"/>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="lib\fop-1.1.dll" target="lib\net40\fop-1.1.dll" />
+  </files>
+</package>

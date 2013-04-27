@@ -1,0 +1,69 @@
+﻿@* Generator: Template *@<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE report [
+    <!ENTITY nbsp "&#160;">
+    <!ENTITY ldquo "&#8220;">
+    <!ENTITY lsquo "&#8216;">
+    <!ENTITY rdquo "&#8221;">
+    <!ENTITY rsquo "&#8217;">
+    <!ENTITY quot "&#34;">
+]>
+@{
+    var packages = new[] {
+        new { Origin =  "Cracow", Destination = "Dululu", Cost = 15.0m },
+        new { Origin = "Emerald", Destination = "Dingo", Cost = 15.0m },
+        new { Origin = "Duaringa", Destination = "Gladstone", Cost = 12.5m },
+        new { Origin = "Dingo", Destination = "Dingo", Cost = 16.0m },
+        new { Origin = "Dululu", Destination = "Duaringa", Cost = 12.5m },
+        new { Origin = "Gladstone", Destination = "Dululu", Cost = 8.5m}
+    };
+}
+<report>
+    <title>Example report</title>
+    <content>
+        <pageSequence orientation="portrait">
+            <htmlBlock>
+                <p>To get this file converted into a .cs file by Razor, include the 
+                'RazorGenerator.Templating' package and set the 'Custom Tool' property
+                of this file to 'RazorGenerator'. Then to produce a PDF do this:</p>
+
+<pre>
+var report = new crispin_razor_example();<br />
+var xrpt = report.TransformText();<br />
+var converter = new PdfReportConverter();<br />
+var pdfBits = converter.ConvertToBuffer(xrpt, "Example report");<br />
+File.WriteAllBytes("output.pdf", pdfBits);
+</pre>
+            </htmlBlock>
+
+            <contentBlock>
+                <table>
+                    <col width="30%" />
+                    <col width="30%" />
+                    <col width="40%" />
+                    <thead>
+                        <tr>
+                            <th align="left">Origin</th>
+                            <th align="left">Destination</th>
+                            <th align="right">Weight (kg)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var package in packages)
+                        {
+                            <tr>
+                                <td>@package.Origin</td>
+                                <td>@package.Destination</td>
+                                <td align="right">@package.Cost.ToString("C")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </contentBlock>
+
+            <htmlBlock>
+                <p><a href="https://github.com/swxben/swxben.reporting/tree/master/src/swxben.reporting.ExampleReportLibrary">More examples</a></p>
+            </htmlBlock>
+        </pageSequence>
+    </content>
+</report>
+

@@ -1,5 +1,5 @@
-swxben.reporting
-================
+Crispin
+=======
 
 Reporting library, using Razor templates to generate HTML, Excel and PDF reports
 
@@ -8,9 +8,9 @@ Reporting library, using Razor templates to generate HTML, Excel and PDF reports
 
 Although the example library and documentation uses Razor as the template engine, the report library itself will accept input from any source, including static XML. To use Razor, install the [Razor Generator](http://razorgenerator.codeplex.com/) VS extension first.
 
-Install the engine via [NuGet](http://nuget.org/packages/swxben.reporting), either in Visual Studio (right-click project, Manage NuGet Packages, search for `swxen.reporting`) or via the package manager console using `Install-Package swxben.reporting`.
+Install the engine via [NuGet](http://nuget.org/packages/crispin), either in Visual Studio (right-click project, Manage NuGet Packages, search for `crispin`) or via the package manager console using `Install-Package crispin`.
 
-There is also a [Razor example package](http://nuget.org/packages/swxben.reporting.razor) which includes `swxben.reporting` and some examples to get started. A [swxben.reporting.System.Web package](http://nuget.org/packages/swxben.reporting.System.Web) is used to replace basic Razor features found via `System.Web` such as automatic HTML encoding and `Html.Raw()` that aren't found in Razor Generator's template library without having to depend on `System.Web`.
+There is also a [Razor example package](http://nuget.org/packages/crispin.razor) which includes `swxben.crispin` and some examples to get started. A [crispin.System.Web package](http://nuget.org/packages/crispin.System.Web) is used to replace basic Razor features found via `System.Web` such as automatic HTML encoding and `Html.Raw()` that aren't found in Razor Generator's template library without having to depend on `System.Web`.
 
 
 ## Usage
@@ -49,7 +49,7 @@ Saves the report to a temporary file then opens it using `Process.Start`.
     reportingService.OpenAsPdf(report.TransformText(), "Name of report");
 
 
-### swxben.reporting.System.Web
+### crispin.System.Web
 
 Minimal workarounds to support `System.Web` assumptions built in to Razor features such as `Html.Raw()`, automatic HTML encoding (eg `@("<em>&</em>")), helpers and `IHtmlString`. Make the template inherit from `System.Web.Razor.CustomRazorTemplateBase` to get the features to work properly.
 
@@ -83,7 +83,7 @@ See <http://msdn.microsoft.com/en-us/library/system.web.ihtmlstring.aspx>.
 
 ## Contribute
 
-If you want to contribute to this project, start by forking the repo: <https://github.com/swxben/swxben.reporting>. Create an issue if applicable, create a branch in your fork, and create a pull request when it's ready. Thanks!
+If you want to contribute to this project, start by forking the repo: <https://github.com/swxben/crispin>. Create an issue if applicable, create a branch in your fork, and create a pull request when it's ready. Thanks!
 
 ### Contributors
 

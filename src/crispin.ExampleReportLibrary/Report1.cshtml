@@ -1,0 +1,58 @@
+﻿@* Generator: Template *@<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE report [
+    <!ENTITY nbsp "&#160;">
+    <!ENTITY ldquo "&#8220;">
+    <!ENTITY lsquo "&#8216;">
+    <!ENTITY rdquo "&#8221;">
+    <!ENTITY rsquo "&#8217;">
+    <!ENTITY quot "&#34;">
+]>
+@using crispin.ExampleReportLibrary
+
+@functions {
+    public IEnumerable<Package> Packages { get; set; }
+}
+@{
+    var header = new Header1
+    {
+        Title = "Report 1",
+        Subtitle = "Subtitle"
+    };
+    var footer = new Footer1();
+}
+<report>
+    <title>Report 1</title>
+    <content>
+        <pageSequence orientation="portrait">
+            @header.TransformText()
+
+            <contentBlock>
+                <table type="DataGridPas2">
+                    <col width="30%" />
+                    <col width="30%" />
+                    <col width="40%" />
+                    <thead>
+                        <tr>
+                            <th align="left">Origin</th>
+                            <th align="left">Destination</th>
+                            <th align="right">Weight (kg)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var package in Packages)
+                        {
+                            <tr>
+                                <td>@package.Origin</td>
+                                <td>@package.Destination</td>
+                                <td align="right">@package.Cost.ToString("C")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </contentBlock>
+
+            @footer.TransformText()
+        </pageSequence>
+    </content>
+</report>
+

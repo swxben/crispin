@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>crispin.razor</id>
+    <version>2.0.0</version>
+    <title>crispin.razor</title>
+    <authors>Software By Ben, Ben Scott, swxben, belfryimages</authors>
+    <owners>Software By Ben, Ben Scott, swxben, belfryimages</owners>
+    <licenseUrl>http://creativecommons.org/licenses/by-sa/3.0/</licenseUrl>
+    <projectUrl>https://github.com/swxben/swxben.reporting</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Razor example for crispin</description>
+    <summary>Razor example for crispin</summary>
+    <releaseNotes>Change name to Crispin</releaseNotes>
+    <tags>reporting template html excel pdf xsl-fo razor crispin</tags>
+    <dependencies>
+      <dependency id="crispin" version="0.1.1"/>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="src\crispin.ExampleReportLibrary\crispin.razor.example.cshtml" target="content" />
+    <file src="src\crispin.ExampleApplication\crispin.razor.example.runner.cs" target="content" />
+  </files>
+</package>

@@ -1,0 +1,42 @@
+﻿@* Generator: Template *@<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE report [
+    <!ENTITY nbsp "&#160;">
+    <!ENTITY ldquo "&#8220;">
+    <!ENTITY lsquo "&#8216;">
+    <!ENTITY rdquo "&#8221;">
+    <!ENTITY rsquo "&#8217;">
+    <!ENTITY quot "&#34;">
+]>
+@using crispin.ExampleReportLibrary
+@{
+    var header = new Header1 { Title = "Static test 1", Subtitle = "" };
+    var footer = new Footer1();
+}
+<report font-size="7pt">
+	<title>Static test 1</title>
+    <content>
+        <pageSequence orientation="portrait">
+            @header.TransformText()
+
+            <contentBlock>
+                <table type="DataGrid">
+                    <col width="30%" />
+                    <col width="70%" />
+                    <thead>
+                        <tr>
+                            <th align="left">ID</th>
+                            <th align="left">Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>123</td><td>Ben</td></tr>
+                        <tr><td>456</td><td>Justine</td></tr>
+                        <tr><td>445</td><td>Ann</td></tr>
+                    </tbody>
+                </table>
+            </contentBlock>
+
+            @footer.TransformText()
+        </pageSequence>
+    </content>
+</report>

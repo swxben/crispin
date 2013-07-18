@@ -4,6 +4,14 @@ Crispin
 Reporting library, using Razor templates to generate HTML, Excel and PDF reports
 
 
+## Is this legit??
+It is in use in two production systems that I know of. One is a mature portfolio 
+management product that has reports generated both on a desktop client and an ASP.NET client. The big
+benefit is you have a single report specification, using domain objects, written in Razor, and surfaced in
+multiple environments in different formats. It's not drag and drop pretty and you may have to use tables for layouts
+but you get solid, reliable results.
+
+
 ## Installation
 
 Although the example library and documentation uses Razor as the template engine, the report library itself will accept input from any source, including static XML. To use Razor, install the [Razor Generator](http://razorgenerator.codeplex.com/) VS extension first.

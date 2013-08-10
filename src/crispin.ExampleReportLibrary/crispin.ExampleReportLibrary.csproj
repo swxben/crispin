@@ -51,6 +51,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>crispin.razor.example.cshtml</DependentUpon>
     </Compile>
+    <None Include="Images.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Images.generated.cs</LastGenOutput>
+    </None>
+    <Compile Include="Images.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Images.cshtml</DependentUpon>
+    </Compile>
     <Compile Include="system_dot_web_tests.generated.cs">
       <DependentUpon>system_dot_web_tests.cshtml</DependentUpon>
       <AutoGen>True</AutoGen>

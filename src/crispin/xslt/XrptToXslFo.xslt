@@ -1225,35 +1225,52 @@
   </xsl:template>
 
   <xsl:template match="img">
-    <fo:external-graphic>
-      <xsl:attribute name="src">url('<xsl:value-of select="@src"/>')</xsl:attribute>
+    <fo:block>
+      <fo:external-graphic>
+        <xsl:attribute name="src">url('<xsl:value-of select="@src"/>')</xsl:attribute>
+        <xsl:attribute name="content-height">scale-to-fit</xsl:attribute>
+        <xsl:attribute name="content-width">scale-to-fit</xsl:attribute>
 
-      <!-- If the img tag uses width and height, assume that it's html-like px -->
-      <xsl:if test="@width">
-        <xsl:attribute name="content-width">
-          <xsl:value-of select="@width"/>
-          <xsl:text>px</xsl:text>
+        <!-- scaling="[uniform | non-uniform | inherit]", default "uniform", http://www.w3.org/TR/xsl/#scaling -->
+        <xsl:attribute name="scaling">
+          <xsl:choose>
+            <xsl:when test="@scaling">
+              <xsl:value-of select="@scaling"/>
+            </xsl:when>
+            <xsl:otherwise>uniform</xsl:otherwise>
+          </xsl:choose>
         </xsl:attribute>
-      </xsl:if>
-      <xsl:if test="@height">
-        <xsl:attribute name="content-height">
-          <xsl:value-of select="@height"/>
-          <xsl:text>px</xsl:text>
-        </xsl:attribute>
-      </xsl:if>
 
-      <!-- If the img tag uses content-width and content-height, assume that it includes the units like nice CSS or XSL-FO -->
-      <xsl:if test="@content-width">
-        <xsl:attribute name="content-width">
-          <xsl:value-of select="@content-width"/>
-        </xsl:attribute>
-      </xsl:if>
-      <xsl:if test="@content-height">
-        <xsl:attribute name="content-height">
-          <xsl:value-of select="@content-height"/>
-        </xsl:attribute>
-      </xsl:if>
-    </fo:external-graphic>
+        <!-- If the img tag uses width and height, assume that it's html-like px -->
+        <xsl:if test="@width">
+          <xsl:attribute name="content-width">
+            <xsl:value-of select="@width"/>
+            <xsl:text>px</xsl:text>
+          </xsl:attribute>
+        </xsl:if>
+        <xsl:if test="@height">
+          <xsl:attribute name="content-height">
+            <xsl:value-of select="@height"/>
+            <xsl:text>px</xsl:text>
+          </xsl:attribute>
+        </xsl:if>
+
+        <!-- If the img tag uses content-width and content-height, assume that it includes the units like nice CSS or XSL-FO -->
+        <xsl:if test="@content-width">
+          <xsl:attribute name="content-width">
+            <xsl:value-of select="@content-width"/>
+          </xsl:attribute>
+        </xsl:if>
+        <xsl:if test="@content-height">
+          <xsl:attribute name="content-height">
+            <xsl:value-of select="@content-height"/>
+          </xsl:attribute>
+        </xsl:if>
+
+        <xsl:comment>.</xsl:comment>
+        
+      </fo:external-graphic>
+    </fo:block>
   </xsl:template>
 
   <xsl:template match="pre">

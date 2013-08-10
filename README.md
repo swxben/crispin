@@ -91,6 +91,13 @@ This is used in the class generated from the Razor template to implement helpers
 See <http://msdn.microsoft.com/en-us/library/system.web.ihtmlstring.aspx>.
 
 
+## Release notes
+
+### 2.1
+
+- Added support for setting the `external-graphic` scaling mode (via `<img scaling="[uniform|non-uniform|inherit]">`). See <http://www.w3.org/TR/xsl/#scaling>.
+
+
 ## Contribute
 
 If you want to contribute to this project, start by forking the repo: <https://github.com/swxben/crispin>. Create an issue if applicable, create a branch in your fork, and create a pull request when it's ready. Thanks!

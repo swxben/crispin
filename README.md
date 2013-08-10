@@ -95,7 +95,9 @@ See <http://msdn.microsoft.com/en-us/library/system.web.ihtmlstring.aspx>.
 
 ### 2.1
 
-- Added support for setting the `external-graphic` scaling mode (via `<img scaling="[uniform|non-uniform|inherit]">`). See <http://www.w3.org/TR/xsl/#scaling>.
+- Added support for setting the `external-graphic` scaling attribute (via `<img scaling="[uniform|non-uniform|inherit]">`). See <http://www.w3.org/TR/xsl/#scaling>.
+- Remove workaround for non-JPEGS
+	- Originally non-JPEG images were transparently converted to JPEGS and written back to the XSL using a `file://` url. This was to compensate for a version of Apache FOP being used that didn't support images that weren't JPEG. The version of Apache FOP in use supports PNGs so I'm dropping the hack.
 
 
 ## Contribute

@@ -1,3 +1,5 @@
+![](https://raw.github.com/swxben/crispin/master/crispin-logo.png)
+
 Crispin
 =======
 

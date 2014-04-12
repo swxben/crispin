@@ -13,7 +13,7 @@ benefit is you have a single report specification, using domain objects, written
 multiple environments in different formats. It's not drag and drop pretty and you may have to use tables for layouts
 but you get solid, reliable results.
 
-![](https://github.com/belfryimages/internet-memes/blob/master/amazed%20cat.jpg?raw=true)
+![](https://github.com/bendetat/internet-memes/blob/master/amazed%20cat.jpg?raw=true)
 
 
 ## Installation

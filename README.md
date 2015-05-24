@@ -43,6 +43,10 @@ Either create a new library project or use an existing project. The report templ
 
 The XML is a bit verbose because the converter uses the same XML to generate the output in several methods including XSL-FO to produce PDFs which needs data about the layout of the resulting document.
 
+This markup is then parsed by one of the report converters (`CsvReportConverter`, `HtmlReportConverter` and `PdfReportConverter), using XSLT to transform the report into the output format.
+
+The `PdfReportConverter` transforms the report markup into XSL-FO, which is then processed by Apache FOP (a Java library, converted to .NET using IKVM) into PDF in memory.
+
 
 ### Reporting service
 
@@ -50,13 +54,34 @@ The `ReportingService` class contains helpers for transforming and managing repo
 
     IReportingService reportingService = new ReportingService();
 
-#### PDF functions
+    // or, with Autofac:
 
-##### OpenAsPdf
+    builder.RegisterType<ReportingService>().As<IReportingService>();
 
-Saves the report to a temporary file then opens it using `Process.Start`.
+
+#### OpenAsPdf
+
+Converts the report markup to a PDF and saves it to a temporary file, then opens it using `Process.Start`.
 
     reportingService.OpenAsPdf(report.TransformText(), "Name of report");
+
+#### ConvertToPdf
+
+Converts the report markup to a PDF and returns a byte array containing the PDF.
+
+	var buf = reportingService.ConvertToPdf(report.TransformText(), "Name of report");
+
+#### ConvertToCsv
+
+Converts the report markup to a CSV (comma separated value) formatted string, by exporting any `table` elements with a `type` attribute equal to `DataGrid` or `Data` (`<table type="DataGrid">`).
+
+	var csv = reportingService.ConvertToCsv(report.TransformText());
+
+#### ConvertToHtml
+
+Converts the report markup to HTML.
+
+	var html = reportingService.ConvertToCsv(report.TransformText());
 
 
 ### crispin.System.Web
@@ -92,6 +117,11 @@ See <http://msdn.microsoft.com/en-us/library/system.web.ihtmlstring.aspx>.
 
 
 ## Release notes
+
+### 2.2
+
+- Upgraded IKVM and RazorGenerator
+- Added new methods to `ReportingService` for converting report markup to PDF byte buffers, CSV and HTML
 
 ### 2.1
 

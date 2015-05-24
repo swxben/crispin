@@ -140,7 +140,7 @@
     <Compile Include="HtmlReportConverter.cs" />
     <Compile Include="IReportConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReportingService`Pdf.cs" />
+    <Compile Include="ReportingService.cs" />
     <EmbeddedResource Include="xslt\XrptToCsv.xslt" />
   </ItemGroup>
   <ItemGroup>

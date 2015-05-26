@@ -119,6 +119,10 @@ See <http://msdn.microsoft.com/en-us/library/system.web.ihtmlstring.aspx>.
 
 ## Release notes
 
+### 2.2.2
+
+- Trim whitespace from incoming XRPT data, to help sanitise reports generated from Razor where the `<?xml` tag may not be the very first thing
+
 ### 2.2.1
 
 - Revert the IKVM and RazorGenerator upgrade, as it was breaking in production...

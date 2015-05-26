@@ -17,7 +17,7 @@ namespace crispin
         public string ConvertToString(string xrpt)
         {
             var xml = new XmlDocument();
-            xml.LoadXml(StripByteOrderMark.Strip(xrpt));
+            xml.LoadXml(StripByteOrderMark.Strip(xrpt.Trim()));
 
             using (var writer = new StringWriterWithEncoding(Encoding.UTF8))
             {

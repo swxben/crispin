@@ -33,8 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="RazorGenerator.Templating">
-      <HintPath>..\..\packages\RazorGenerator.Templating.2.3.3\lib\portable-net40+sl50+win+wpa81+wp80\RazorGenerator.Templating.dll</HintPath>
+    <Reference Include="RazorGenerator.Templating, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\RazorGenerator.Templating.2.0.0\lib\net40\RazorGenerator.Templating.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -75,6 +76,9 @@
       <DependentUpon>CustomPageSetupTest.cshtml</DependentUpon>
     </Compile>
     <None Include="packages.config" />
+    <None Include="SampleTemplate.cshtml">
+      <Generator>RazorGenerator</Generator>
+    </None>
     <None Include="system_dot_web_tests.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>system_dot_web_tests.generated.cs</LastGenOutput>

@@ -3,7 +3,7 @@ using System.IO;
 
 namespace crispin
 {
-    public partial class ReportingService : IReportingService
+    public class ReportingService : IReportingService
     {
         public void OpenAsPdf(string xrpt, string reportName)
         {

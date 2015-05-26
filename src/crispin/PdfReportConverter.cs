@@ -19,14 +19,14 @@ namespace crispin
         public string ConvertToString(string xrpt)
         {
             var xml = new XmlDocument();
-            xml.LoadXml(StripByteOrderMark.Strip(xrpt));
+            xml.LoadXml(StripByteOrderMark.Strip(xrpt.Trim()));
             return GetXslfoText(xml);
         }
 
         public byte[] ConvertToBuffer(string xrpt, string reportName)
         {
             var xml = new XmlDocument();
-            xml.LoadXml(StripByteOrderMark.Strip(xrpt));
+            xml.LoadXml(StripByteOrderMark.Strip(xrpt.Trim()));
 
             var xslfoText = GetXslfoText(xml);
             

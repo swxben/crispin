@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>crispin.razor</id>
-    <version>2.2.0</version>
+    <version>2.2.1</version>
     <title>crispin.razor</title>
     <authors>Software By Ben, Ben Scott, swxben, belfryimages</authors>
     <owners>Software By Ben, Ben Scott, swxben, belfryimages</owners>
@@ -11,7 +11,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Razor example for crispin</description>
     <summary>Razor example for crispin</summary>
-    <releaseNotes>Update IKVM and RazorGenerator</releaseNotes>
+    <releaseNotes>Roll back IKVM update :-(</releaseNotes>
     <tags>reporting template html excel pdf xsl-fo razor crispin</tags>
     <dependencies>
       <dependency id="crispin" version="0.1.1"/>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>crispin.System.Web</id>
+    <version>0.0.0</version>
+    <title>crispin.System.Web</title>
+    <authors>Software By Ben, Ben Scott, swxben, belfryimages</authors>
+    <owners>Software By Ben, Ben Scott, swxben, belfryimages</owners>
+    <licenseUrl>http://creativecommons.org/licenses/by-sa/3.0/</licenseUrl>
+    <projectUrl>https://github.com/swxben/swxben.reporting</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Replacement/placeholder for System.Web</description>
+    <summary>Minimal replacement/placeholder for System.Web</summary>
+    <releaseNotes>https://github.com/swxben/crispin/blob/master/release-notes.md</releaseNotes>
+    <tags>reporting template html excel pdf xsl-fo razor crispin</tags>
+  </metadata>
+  <files>
+    <file src="bin\Release\crispin.System.Web.dll" target="lib\net40\crispin.System.Web.dll" />
+  </files>
+</package>

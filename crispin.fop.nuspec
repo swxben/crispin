@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>crispin.fop</id>
-    <version>2.3.0</version>
+    <version>0.0.0</version>
     <title>crispin.fop</title>
     <authors>Software By Ben, Ben Scott, swxben, belfryimages</authors>
     <owners>Software By Ben, Ben Scott, swxben, belfryimages</owners>
@@ -11,7 +11,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Apache FOP, converted to .NET using IKVM</description>
     <summary>Apache FOP, converted to .NET using IKVM</summary>
-    <releaseNotes>FOP 2.0</releaseNotes>
+    <releaseNotes>https://github.com/bendetat/giger/blob/master/release-notes.md</releaseNotes>
     <tags>xsl-fo apache fop ikvm crispin</tags>
     <dependencies>
       <dependency id="IKVM" version="7.2.4630.5"/>

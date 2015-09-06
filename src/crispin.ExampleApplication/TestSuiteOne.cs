@@ -29,7 +29,8 @@ namespace crispin.ExampleApplication
                  new crispin_razor_example(),
                  new test_with_bom_report(),
                  new RightAlignedNestedTable(),
-                 new system_dot_web_tests()
+                 new system_dot_web_tests(),
+                 new Images(), 
             };
             var converters = new IReportConverter[] {
                 new CsvReportConverter(),

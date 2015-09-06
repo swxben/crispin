@@ -8,12 +8,45 @@ namespace crispin
         public void OpenAsPdf(string xrpt, string reportName)
         {
             var dest = Path.GetTempFileName();
+
             File.WriteAllBytes(dest, ConvertToPdf(xrpt, reportName));
+
+            var newDest = RenameExtension(dest, "pdf");
+
+            Process.Start(newDest);
+        }
+
+        private static string RenameExtension(string dest, string extension)
+        {
             var newDest = Path.Combine(
                 // ReSharper disable once AssignNullToNotNullAttribute
                 Path.GetDirectoryName(dest),
-                Path.GetFileNameWithoutExtension(dest) + ".pdf");
+                Path.GetFileNameWithoutExtension(dest) + "." + extension);
+
             File.Move(dest, newDest);
+
+            return newDest;
+        }
+
+        public void OpenAsHtml(string xrpt)
+        {
+            var dest = Path.GetTempFileName();
+
+            File.WriteAllText(dest, ConvertToHtml(xrpt));
+
+            var newDest = RenameExtension(dest, "html");
+
+            Process.Start(newDest);
+        }
+
+        public void OpenAsCsv(string xrpt)
+        {
+            var dest = Path.GetTempFileName();
+
+            File.WriteAllText(dest, ConvertToCsv(xrpt));
+
+            var newDest = RenameExtension(dest, "csv");
+
             Process.Start(newDest);
         }
 

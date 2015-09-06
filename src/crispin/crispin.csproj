@@ -33,8 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="fop-1.1">
-      <HintPath>..\..\lib\fop-1.1.dll</HintPath>
+    <Reference Include="fop-2.0">
+      <HintPath>..\..\lib\fop-2.0.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.AWT.WinForms">
       <HintPath>..\..\packages\IKVM.7.2.4630.5\lib\IKVM.AWT.WinForms.dll</HintPath>
@@ -124,6 +124,7 @@
     <Compile Include="Helpers\FopInterface.cs" />
     <Compile Include="Helpers\StripByteOrderMark.cs" />
     <Compile Include="Helpers\XsltLoader.cs" />
+    <Compile Include="InternalHelpers.cs" />
     <Compile Include="IReportingService.cs" />
     <Compile Include="PdfReportConverter.cs" />
     <Compile Include="CsvReportConverter.cs" />
@@ -132,6 +133,7 @@
     <Compile Include="IReportConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportingService.cs" />
+    <Compile Include="XmlFragmentWriter.cs" />
     <EmbeddedResource Include="xslt\XrptToCsv.xslt" />
   </ItemGroup>
   <ItemGroup>

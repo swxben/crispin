@@ -783,6 +783,7 @@
 
   <xsl:template match="div">
     <fo:block>
+      <xsl:call-template name="set-block-styles"/>
       <xsl:if test="@class='bordered'">
         <xsl:attribute name="border-width">1pt</xsl:attribute>
         <xsl:attribute name="border-style">solid</xsl:attribute>
@@ -1223,54 +1224,101 @@
       </fo:block>
     </fo:caption>
   </xsl:template>
+  
+  <!-- external anchor -->
+  <xsl:template match="a">
+    <xsl:comment>anchor</xsl:comment>
+    <fo:basic-link color="blue" text-decoration="underline">
+      <xsl:attribute name="external-destination">url('<xsl:value-of select="@href"/>')</xsl:attribute>
+      <xsl:apply-templates/>
+    </fo:basic-link>
+    <xsl:comment>/anchor</xsl:comment>
+  </xsl:template>
 
+  <!-- img -->
+  <!-- PNG and JPEG have been tested, either as remote URLs or base64 encoded url -->
   <xsl:template match="img">
+    <xsl:comment>img</xsl:comment>
     <fo:block>
       <fo:external-graphic>
+      <xsl:call-template name="set-block-styles"/>
         <xsl:attribute name="src">url('<xsl:value-of select="@src"/>')</xsl:attribute>
         <xsl:attribute name="content-height">scale-to-fit</xsl:attribute>
         <xsl:attribute name="content-width">scale-to-fit</xsl:attribute>
-
-        <!-- scaling="[uniform | non-uniform | inherit]", default "uniform", http://www.w3.org/TR/xsl/#scaling -->
-        <xsl:attribute name="scaling">
-          <xsl:choose>
-            <xsl:when test="@scaling">
-              <xsl:value-of select="@scaling"/>
-            </xsl:when>
-            <xsl:otherwise>uniform</xsl:otherwise>
-          </xsl:choose>
-        </xsl:attribute>
-
-        <!-- If the img tag uses width and height, assume that it's html-like px -->
-        <xsl:if test="@width">
-          <xsl:attribute name="content-width">
-            <xsl:value-of select="@width"/>
-            <xsl:text>px</xsl:text>
-          </xsl:attribute>
-        </xsl:if>
-        <xsl:if test="@height">
-          <xsl:attribute name="content-height">
-            <xsl:value-of select="@height"/>
-            <xsl:text>px</xsl:text>
-          </xsl:attribute>
-        </xsl:if>
-
-        <!-- If the img tag uses content-width and content-height, assume that it includes the units like nice CSS or XSL-FO -->
-        <xsl:if test="@content-width">
-          <xsl:attribute name="content-width">
-            <xsl:value-of select="@content-width"/>
-          </xsl:attribute>
-        </xsl:if>
-        <xsl:if test="@content-height">
-          <xsl:attribute name="content-height">
-            <xsl:value-of select="@content-height"/>
-          </xsl:attribute>
-        </xsl:if>
-
-        <xsl:comment>.</xsl:comment>
-        
+        <xsl:call-template name="tpl-property-scaling"/>
+        <xsl:call-template name="tpl-height-width"/>
       </fo:external-graphic>
     </fo:block>
+    <xsl:comment>/img</xsl:comment>
+  </xsl:template>
+
+  <!-- svg either with a src="url" attribute or embedded SVG markup -->
+  <!-- Note that embedded markup doesn't actually work. Crispin works around this
+  by preprocessing embedded SVG markup into base64 encoded urls. -->
+  <xsl:template match="svg">
+    <xsl:comment>svg</xsl:comment>
+    <fo:block>
+      <xsl:choose>
+        <xsl:when test="@src">
+          <xsl:comment>svg with src</xsl:comment>
+          <fo:external-graphic>
+            <xsl:call-template name="set-block-styles"/>
+            <xsl:attribute name="src">url('<xsl:value-of select="@src"/>')</xsl:attribute>
+            <xsl:attribute name="content-height">scale-to-fit</xsl:attribute>
+            <xsl:attribute name="content-width">scale-to-fit</xsl:attribute>
+            <xsl:call-template name="tpl-property-scaling"/>
+            <xsl:call-template name="tpl-height-width"/>
+          </fo:external-graphic>
+          <xsl:comment>/svg with src</xsl:comment>
+        </xsl:when>
+        <xsl:otherwise>
+          <fo:instream-foreign-object>
+            <xsl:copy-of select="."/>
+          </fo:instream-foreign-object>
+        </xsl:otherwise>
+      </xsl:choose>
+    </fo:block>
+    <xsl:comment>/svg</xsl:comment>
+  </xsl:template>
+
+  <xsl:template name="tpl-property-scaling">
+    <!-- scaling="[uniform | non-uniform | inherit]", default "uniform", http://www.w3.org/TR/xsl/#scaling -->
+    <xsl:attribute name="scaling">
+      <xsl:choose>
+        <xsl:when test="@scaling">
+          <xsl:value-of select="@scaling"/>
+        </xsl:when>
+        <xsl:otherwise>uniform</xsl:otherwise>
+      </xsl:choose>
+    </xsl:attribute>
+  </xsl:template>
+
+  <xsl:template name="tpl-height-width">
+    <!-- If the img tag uses width and height, assume that it's html-like px -->
+    <xsl:if test="@width">
+      <xsl:attribute name="content-width">
+        <xsl:value-of select="@width"/>
+        <xsl:text>px</xsl:text>
+      </xsl:attribute>
+    </xsl:if>
+    <xsl:if test="@height">
+      <xsl:attribute name="content-height">
+        <xsl:value-of select="@height"/>
+        <xsl:text>px</xsl:text>
+      </xsl:attribute>
+    </xsl:if>
+
+    <!-- If the img tag uses content-width and content-height, assume that it includes the units like nice CSS or XSL-FO -->
+    <xsl:if test="@content-width">
+      <xsl:attribute name="content-width">
+        <xsl:value-of select="@content-width"/>
+      </xsl:attribute>
+    </xsl:if>
+    <xsl:if test="@content-height">
+      <xsl:attribute name="content-height">
+        <xsl:value-of select="@content-height"/>
+      </xsl:attribute>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template match="pre">
@@ -1325,6 +1373,13 @@
   <xsl:template match="sup">
     <fo:inline alignment-adjust="-2pt" font-size="70%">
       <xsl:apply-templates />
+    </fo:inline>
+  </xsl:template>
+  
+  <!-- code -->
+  <xsl:template match="pre">
+    <fo:inline font-family="monospace">
+      <xsl:apply-templates/>
     </fo:inline>
   </xsl:template>
 

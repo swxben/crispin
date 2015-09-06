@@ -603,8 +603,30 @@
     <br />
   </xsl:template>
 
-
-
-
+  <!-- svg - uses an img tag, inline svgs are preproccesed into a base64 data url -->
+  <xsl:template match="svg">
+    <img>
+      <xsl:attribute name="src">
+        <xsl:value-of select="@src"/>
+      </xsl:attribute>
+      <!-- If the img tag uses width and height, assume that it's html-like px -->
+      <xsl:if test="@width">
+        <xsl:attribute name="width">
+          <xsl:value-of select="@width"/>px
+        </xsl:attribute>
+      </xsl:if>
+      <xsl:if test="@height">
+        <xsl:attribute name="height">
+          <xsl:value-of select="@height"/>px
+        </xsl:attribute>
+      </xsl:if>
+      <!-- If the img tag uses content-width and content-height, assume that it includes the units like nice CSS or XSL-FO -->
+      <xsl:if test="@content-width or @content-height">
+        <xsl:attribute name="style">
+          width:<xsl:value-of select="@content-width"/>;height:<xsl:value-of select="@content-height"/>
+        </xsl:attribute>
+      </xsl:if>
+    </img>
+  </xsl:template>
 
 </xsl:stylesheet>

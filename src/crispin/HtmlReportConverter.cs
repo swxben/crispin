@@ -9,7 +9,7 @@ namespace crispin
 {
     public class HtmlReportConverter : IReportConverter
     {
-        XslCompiledTransform _xslt = XsltLoader.LoadFromAssembly("crispin.xslt.XrptToHtml.xslt");
+        private XslCompiledTransform _xslt = XsltLoader.LoadFromAssembly("crispin.xslt.XrptToHtml.xslt");
 
         public void ReplaceXslt(XslCompiledTransform newXslt)
         {
@@ -18,7 +18,10 @@ namespace crispin
 
         public string ConvertToString(string xrpt)
         {
+            xrpt = Preprocess(xrpt);
+
             var xml = new XmlDocument();
+
             xml.LoadXml(StripByteOrderMark.Strip(xrpt.Trim()));
 
             using (var writer = new StringWriter())
@@ -30,13 +33,23 @@ namespace crispin
                 _xslt.Transform(xml, null, xmlWriter, new XmlUrlResolver());
 
                 return writer.ToString()
-                    .Replace(Convert.ToString((char)160), "&nbsp;");
+                    .Replace(Convert.ToString((char) 160), "&nbsp;");
             }
         }
 
         public byte[] ConvertToBuffer(string xrpt, string reportName)
         {
             return Encoding.UTF8.GetBytes(ConvertToString(xrpt));
+        }
+
+        private static string Preprocess(string xrpt)
+        {
+            var doc = new XmlDocument();
+            doc.LoadXml(xrpt);
+
+            InternalHelpers.PreprocessSvgElementsIntoInlineDataUrls(doc);
+
+            return InternalHelpers.GetXml(doc);
         }
     }
 }

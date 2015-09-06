@@ -1,4 +1,5 @@
-﻿using javax.xml.transform.sax;
+﻿using java.io;
+using javax.xml.transform.sax;
 using javax.xml.transform.stream;
 using org.apache.fop.apps;
 
@@ -6,23 +7,22 @@ namespace crispin.Helpers
 {
     static class FopInterface
     {
-        static FopFactory FOP_FACTORY = null;
+        static readonly FopFactory FopFactory;
 
         static FopInterface()
         {
-            java.lang.System.setProperty("javax.xml.parsers.SAXParserFactory", "org.apache.xerces.jaxp.SAXParserFactoryImpl");
-            FOP_FACTORY = FopFactory.newInstance();
+            FopFactory = FopFactory.newInstance(new File(".").toURI());
         }
 
         public static byte[] ProcessXslFo(string xslfo, string name)
         {
-            var foUserAgent = FOP_FACTORY.newFOUserAgent();
-            foUserAgent.setCreator("swxben.reporting (Apache FOP 1.0 via IKVM)");
+            var foUserAgent = FopFactory.newFOUserAgent();
+            foUserAgent.setCreator("Crispin (Apache FOP 2.0 via IKVM)");
             foUserAgent.setTitle(name);
 
             var outputStream = new java.io.ByteArrayOutputStream();
 
-            var fop = FOP_FACTORY.newFop(org.apache.xmlgraphics.util.MimeConstants.__Fields.MIME_PDF, foUserAgent, outputStream);
+            var fop = FopFactory.newFop(org.apache.xmlgraphics.util.MimeConstants.__Fields.MIME_PDF, foUserAgent, outputStream);
 
             var transformerFactory = new com.sun.org.apache.xalan.@internal.xsltc.trax.TransformerFactoryImpl();
             var transformer = transformerFactory.newTransformer();

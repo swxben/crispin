@@ -96,7 +96,11 @@ May contain header style attributes:
 - `font-size`
 - `set-alignment` attributes
 
+## a
 
+Anchors are basic HTML anchors, with only the `href` attribute used:
+
+	Link to a <a href="http://...">website</a>.
 
 
 

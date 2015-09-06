@@ -119,6 +119,12 @@ See <http://msdn.microsoft.com/en-us/library/system.web.ihtmlstring.aspx>.
 
 ## Release notes
 
+### 2.3.0
+
+- Update FOP to 2.0! woohoo!
+- Support for SVGs in both HTML and PDF
+- Support the `a` tag in PDFs
+
 ### 2.2.2
 
 - Trim whitespace from incoming XRPT data, to help sanitise reports generated from Razor where the `<?xml` tag may not be the very first thing
@@ -150,7 +156,7 @@ If you want to contribute to this project, start by forking the repo: <https://g
 
 THe VS2010 solution is in the root folder. Unit tests (coming up) can be run in a console using `tests.bat`. The NuGet package can be built by running `build-nuget-package.cmd`.
 
-### Upgrading FOP and IKVM
+### Upgrading FOP, Batik and IKVM
 
 [Apache FOP](http://xmlgraphics.apache.org/fop/) is used to convert XSL-FO into a PDF but it is written in Java, so [IKVM](http://www.ikvm.net) is used to convert FOP into a .NET assembly and to provide a Java runtime to FOP.
 
@@ -162,7 +168,8 @@ The IKVM dependency is managed via NuGet but the FOP assembly is created and upg
 4. Open a console and cd to `%DESKTOP%\fop-x.xx\lib\`
 5. Run: `..\..\<path to ikvm>\bin\ikvmc -out:fop-x.xx.dll *.jar ..\build\fop.jar`
 
-A number of warnings and errors will come up, hopefully they can be ignored and the new `fop-x.xx.dll` file will be created in `<ikvm>\bin\`. Copy the DLL to the `swxben.reporting/lib` folder and update the FOP reference to the new assembly. Note that the IKVM version used to create the FOP assembly needs to match the IKVM version used by `swxben.reporting`.
+A number of warnings and errors will come up, hopefully they can be ignored and the new `fop-x.xx.dll` file will be created in the current folder. Copy the DLL to the `swxben.reporting/lib` folder and update the FOP reference to the new assembly. Note that the IKVM version used to create the FOP assembly needs to match the IKVM version used by `swxben.reporting`.
+
 
 
 ## Licenses

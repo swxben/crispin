@@ -1,0 +1,14 @@
+site_name: Crispin
+theme: readthedocs
+repo_url: https://github.com/swxben/crispin
+
+pages:
+- Home: index.md
+- Installation: installation.md
+- Usage: usage.md
+- API:
+	- Reporting service: api/reporting-service.md
+	- crispin.System.Web: api/crispin.system.web.md
+- Contributing: contributing.md
+- Release notes: release-notes.md
+- Licenses: licenses.md

@@ -1,3 +1,10 @@
+
+
+### 2.3.1
+
+- Fix version of FOP
+
+
 ### 2.3.0
 
 - Update FOP to 2.0! woohoo!

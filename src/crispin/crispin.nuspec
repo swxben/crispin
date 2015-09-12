@@ -14,7 +14,7 @@
     <releaseNotes>https://github.com/swxben/crispin/blob/master/release-notes.md</releaseNotes>
     <tags>reporting template html excel pdf xsl-fo</tags>
     <dependencies>
-      <dependency id="crispin.fop" version="2.3.0"/>
+      <dependency id="crispin.fop" version="2.3.1"/>
     </dependencies>
   </metadata>
   <files>

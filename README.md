@@ -5,6 +5,6 @@ Crispin
 
 Reporting library, using Razor templates to generate HTML, Excel and PDF reports.
 
-Documentation is moving to readthedocs.org
+See <http://crispin.readthedocs.org/en/latest/> for the documentation
 
 

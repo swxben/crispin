@@ -1,3 +1,6 @@
+### 2.3.2
+
+- Make `FopInterface` public
 
 
 ### 2.3.1

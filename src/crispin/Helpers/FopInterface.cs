@@ -5,7 +5,7 @@ using org.apache.fop.apps;
 
 namespace crispin.Helpers
 {
-    static class FopInterface
+    public static class FopInterface
     {
         static readonly FopFactory FopFactory;
 

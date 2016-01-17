@@ -1,3 +1,9 @@
+### 2.4.0
+
+- Update FOP to 2.1
+- Update IKVM to 8.1.5717.0
+- Tidy up exception thrown if an error happens during XSL-FO to PDF conversion
+
 ### 2.3.2
 
 - Make `FopInterface` public

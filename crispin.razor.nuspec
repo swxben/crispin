@@ -11,10 +11,10 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Razor example for crispin</description>
     <summary>Razor example for crispin</summary>
-    <releaseNotes>https://github.com/swxben/crispin/blob/master/release-notes.md</releaseNotes>
+    <releaseNotes>https://github.com/swxben/crispin/blob/master/docs/release-notes.md</releaseNotes>
     <tags>reporting template html excel pdf xsl-fo razor crispin</tags>
     <dependencies>
-      <dependency id="crispin" version="2.3.0"/>
+      <dependency id="crispin" version="2.4.0"/>
     </dependencies>
   </metadata>
   <files>

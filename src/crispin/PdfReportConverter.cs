@@ -80,9 +80,7 @@ namespace crispin
             }
             catch (Exception ex)
             {
-                throw new Exception(
-                    string.Format("Report content: {0}", xslfoText),
-                    ex);
+                throw new PdfReportConverterException(ex, xslfoText);
             }
         }
     }

@@ -17,7 +17,7 @@ namespace crispin.Helpers
         public static byte[] ProcessXslFo(string xslfo, string name)
         {
             var foUserAgent = FopFactory.newFOUserAgent();
-            foUserAgent.setCreator("Crispin (Apache FOP 2.0 via IKVM)");
+            foUserAgent.setCreator("Crispin (Apache FOP 2.1 via IKVM)");
             foUserAgent.setTitle(name);
 
             var outputStream = new java.io.ByteArrayOutputStream();
